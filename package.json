@@ -1,0 +1,68 @@
+{
+  "name": "nemo",
+  "version": "4.0.0-alpha.1",
+  "description": "Wrapper to run mocha suites with injected selenium-webdriver instance",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run lint && npm run nemo",
+    "nemo": "DEBUG=nemo*,mocha:runner ./bin/nemo -B test -G @suite1",
+    "nemo:no:selenium:promises": "SELENIUM_PROMISE_MANAGER=0 DEBUG=nemo* ./bin/nemo -B test -P pay -D",
+    "nemo:debug": "DEBUG=nemo ./bin/nemo -B test -G @suite1 --debug-brk --inspect",
+    "nemo:parallel": "DEBUG=nemo* ./bin/nemo -B test -G @suite1,@suite2,@suite3,@suite4 -F",
+    "nemo:parallel:data": "DEBUG=nemo* ./bin/nemo -B test -P search,pay -D",
+    "nemo:search": "SELENIUM_PROMISE_MANAGER=0 DEBUG=nemo* ./bin/nemo -B test -P search -D",
+    "nemo:pay": "SELENIUM_PROMISE_MANAGER=0 DEBUG=nemo* ./bin/nemo -B test -P pay -D",
+    "nemo:form": "SELENIUM_PROMISE_MANAGER=0 DEBUG=nemo* ./bin/nemo -B test -P form",
+    "nemo:xunit": "DEBUG=nemo* ./bin/nemo -B test -G @suite1 -P xunit",
+    "nemo:server": "DEBUG=nemo* ./bin/nemo -B test -S",
+    "lint": "eslint ./bin/* ./lib/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/paypal/nemo.git"
+  },
+  "bin": {
+    "nemo": "./bin/nemo",
+    "_nemo": "./bin/_nemo"
+  },
+  "keywords": [
+    "nemo",
+    "mocha",
+    "selenium",
+    "parallel"
+  ],
+  "author": "grawk <mattedelman@gmail.com>",
+  "contributors": [
+    "grawk <mattedelman@gmail.com>",
+    "Kurt Weiberth <kurt.weiberth@gmail.com>",
+    "Ethan Godt <ethan@ethangodt.com>"
+  ],
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/krakenjs/nemo/issues"
+  },
+  "homepage": "https://github.com/krakenjs/nemo#readme",
+  "dependencies": {
+    "async": "^2.5.0",
+    "cli-table": "^0.3.1",
+    "commander": "^2.9.0",
+    "debug": "^2.6.3",
+    "express": "^4.16.2",
+    "express-graphql": "^0.6.11",
+    "filenamify": "^2.0.0",
+    "glob": "^7.1.1",
+    "graphql": "^0.12.3",
+    "lodash.merge": "^4.6.0",
+    "mocha": "^3.2.0",
+    "mochawesome": "^2.3.1",
+    "moment": "^2.19.2",
+    "nemo-core": "^1.0.0",
+    "nemo-view": "^3.1.0",
+    "threads": "^0.7.2",
+    "uuid": "^3.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-plugin-es6-recommended": "^0.1.2"
+  }
+}

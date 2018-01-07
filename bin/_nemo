@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+'use strict';
+
+
+/**
+ * Module dependencies.
+ */
+
+var program = require('commander');
+var path = require('path');
+var fs = require('fs');
+var cwd = process.cwd();
+var server = require('../lib/server');
+var debug = require('debug');
+var log = debug('nemo:log');
+var error = debug('nemo:error');
+var prefontaine = require('../lib/prefontaine');
+
+function list(val) {
+  return val.split(',');
+}
+
+function cwdPath(rel) {
+  return path.resolve(cwd, rel);
+}
+
+program
+  .version(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version)
+  .usage('[options]')
+  .option('-B, --base-directory <path>', 'parent directory for config/ and spec/ (or other test file) directories. relative to cwd', cwdPath)
+  .option('-P, --profile [profile]', 'which profile(s) to run, out of the configuration', list)
+  .option('-G, --grep <pattern>', 'only run tests matching <pattern>', list)
+  .option('-F, --file ', 'run parallel by file')
+  .option('-D, --data ', 'run parallel by data')
+  .option('-S, --server ', 'run the nemo web server')
+  .option('--debug-brk', 'enable node\'s debugger breaking on the first line')
+  .option('--inspect', 'activate devtools in chrome')
+  .option('--no-timeouts', 'remove timeouts in debug/inspect use case')
+  .parse(process.argv);
+
+program._name = 'nemo';
+
+// are we launching the server?
+if (program.server) {
+  log('CLI launching server');
+  return server(program);
+}
+log('CLI launching runner');
+prefontaine(program)
+  .then(function (pre) {
+    return prefontaine.start(pre);
+  })
+  .catch(function (err) {
+    error('problem with start %O', err);
+  });

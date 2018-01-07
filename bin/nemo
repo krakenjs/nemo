@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+
+'use strict';
+
+var spawn = require('child_process').spawn;
+var path = require('path');
+var args = [path.join(__dirname, '_nemo')];
+var proc;
+
+process.argv.slice(2).forEach(function (arg) {
+  var flag = arg.split('=')[0];
+
+  switch (flag) {
+  case 'debug':
+  case '--debug':
+  case '--debug-brk':
+  case '--inspect':
+  case '--inspect-brk':
+    args.unshift(arg);
+    break;
+  default:
+    if (arg.indexOf('--harmony') === 0) {
+      args.unshift(arg);
+    } else if (arg.indexOf('--trace') === 0) {
+      args.unshift(arg);
+    } else if (arg.indexOf('--icu-data-dir') === 0) {
+      args.unshift(arg);
+    } else if (arg.indexOf('--max-old-space-size') === 0) {
+      args.unshift(arg);
+    } else if (arg.indexOf('--preserve-symlinks') === 0) {
+      args.unshift(arg);
+    } else {
+      args.push(arg);
+    }
+    break;
+  }
+});
+
+proc = spawn(process.execPath, args, {stdio: 'inherit'});
+proc.on('exit', function (code, signal) {
+  process.on('exit', function () {
+    if (signal) {
+      process.kill(process.pid, signal);
+    } else {
+      process.exit(code);
+    }
+  });
+});
+
+// terminate children.
+process.on('SIGINT', function () {
+  proc.kill('SIGINT');
+  proc.kill('SIGTERM');
+});
