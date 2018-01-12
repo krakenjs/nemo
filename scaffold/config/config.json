@@ -13,12 +13,12 @@
     "output": {
         "reports": "path:report"
 // uncomment if you have an influxdb instance
-        ,"storage": {
-            "server": "localhost",
-            "database": "nemo",
-            "user": "admin",
-            "password": "admin"
-        }
+//        ,"storage": {
+//            "server": "localhost",
+//            "database": "nemo",
+//            "user": "admin",
+//            "password": "admin"
+//        }
     },
     "profiles": {
         "base": {
