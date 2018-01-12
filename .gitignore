@@ -2,3 +2,4 @@ node_modules
 *.log
 .idea
 test/report
+scaffold/report

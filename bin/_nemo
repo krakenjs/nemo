@@ -11,6 +11,7 @@ var path = require('path');
 var fs = require('fs');
 var cwd = process.cwd();
 var server = require('../lib/server');
+var scaffold = require('../lib/scaffold');
 var debug = require('debug');
 var log = debug('nemo:log');
 var error = debug('nemo:error');
@@ -33,6 +34,7 @@ program
   .option('-F, --file ', 'run parallel by file')
   .option('-D, --data ', 'run parallel by data')
   .option('-S, --server ', 'run the nemo web server')
+  .option('-X, --scaffold <path>', 'inject an example nemo suite under <path>')
   .option('--debug-brk', 'enable node\'s debugger breaking on the first line')
   .option('--inspect', 'activate devtools in chrome')
   .option('--no-timeouts', 'remove timeouts in debug/inspect use case')
@@ -44,6 +46,10 @@ program._name = 'nemo';
 if (program.server) {
   log('CLI launching server');
   return server(program);
+}
+if (program.scaffold) {
+  log('launching scaffold');
+  return scaffold(program);
 }
 log('CLI launching runner');
 prefontaine(program)

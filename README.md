@@ -10,92 +10,21 @@ Install nemo
 npm install --save-dev nemo
 ```
 
-Install chromedriver and GeckoDriver to your $PATH
+Use the scaffold feature
 
-Add tests directory structure
+```bash
+$ ./node_modules/bin/nemo -X test/functional
+
+        DONE!
+
+        Next steps:
+        1. Add a script to package.json. E.g. "nemo": "nemo -B test/functional -P pay,search,form"
+        2. Make sure you have chromedriver installed
+        3. Run nemo! "npm run nemo"
+
+$
 
 ```
-test
-    functional
-        config
-            config.json
-        spec
-            spec.js
-```
-
-`config.json`
-
-```js
-{
-  "driver": {
-    "browser": "phantomjs"
-  },
-  "data": {
-    "baseUrl": "http://localhost:8000"
-  },
-  "profiles": {
-    "base": {
-      "tests": "path:spec/*.js",
-      "env": {
-        "DEBUG": "nemo*"
-      },
-      "mocha": {
-        "timeout": 180000,
-        "retries": 0,
-        "require": "babel-register",
-        "grep": "argv:grep"
-      }
-    },
-    "chrome": {
-      "driver": {
-        "browser": "chrome"
-      }
-    },
-    "firefox": {
-      "driver": {
-        "browser": "firefox"
-      }
-    }
-  }
-}
-```
-
-`spec.js`
-
-```js
-describe('@foo@', function () {
-    it('should @success@fully load a URL', async function () {
-        let nemo = this.nemo;
-        await nemo.driver.get(nemo.data.baseUrl);
-        await nemo.driver.sleep(3000);
-    });
-});
-describe('@bar@', function () {
-    it('should @fail@ to load a URL', async function () {
-        let nemo = this.nemo;
-        await nemo.driver.get('http://localhost/does/not/exist');
-        await nemo.driver.sleep(3000);
-    });
-});
-```
-
-Add run script(s) to package.json (you can also just run the full command directly but this is cleaner)
-
-```js
-"scripts": {
-    "start": "node index.js",
-    "nemo": "nemo -B test/functional -P firefox,chrome -G @foo@,@bar@",
-    "nemo:debug": "nemo --inspect --debug-brk -B test/functional -P firefox -G @foo@"
-},
-```
-
-Give it a try
-
-```sh
-npm run nemo
-```
-
-You should have seen two Firefox and two Chrome browser instances open and execute the scripts.
 
 ## CLI arguments
 
@@ -119,6 +48,64 @@ You should have seen two Firefox and two Chrome browser instances open and execu
 
 ## Profile options
 
+### `output`
+
+### `output.reports`
+
+Recommended to set this as `path:report`, which will create a `report` directory beneath your base directory. See `Reporting` below.
+
+### `output.storage <optional but cool>`
+
+You can provide an influxdb endpoint and store test results in it. E.g.
+
+```js
+"storage": {
+    "server": "localhost",
+    "database": "nemo"
+}
+```
+
+![50%](static/influx-query.png)
+
+Currently, you will get two measurements from running tests, `test` and `lifecycle`:
+
+```js
+schema: [{
+  measurement: 'test',
+  fields: {
+    result: Influx.FieldType.STRING,
+    error: Influx.FieldType.STRING,
+    stack: Influx.FieldType.STRING,
+    fullTitle: Influx.FieldType.STRING,
+    duration: Influx.FieldType.INTEGER,
+    threadID: Influx.FieldType.STRING,
+    masterID: Influx.FieldType.STRING
+  },
+  tags: [
+    'title',
+    'profile',
+    'dkey',
+    'file',
+    'grep'
+  ]
+},
+{
+  measurement: 'lifecycle',
+  fields: {
+    event: Influx.FieldType.STRING,
+    threadID: Influx.FieldType.STRING,
+    masterID: Influx.FieldType.STRING,
+    duration: Influx.FieldType.INTEGER
+  },
+  tags: [
+    'profile',
+    'dkey',
+    'grep'
+  ]
+}]
+```
+
+
 ### `base`
 
 is the main profile configuration that others will merge into
@@ -134,10 +121,6 @@ only valid for 'base'.
 - if set to 'file' it will create a child process for each mocha file (alternative to `-F` CLI arg)
 - if set to 'data' it will create a child process for each object key under `base.data` (alternative to the `-D` CLI arg)
 
-### `base.reports`
-
-Recommended to set this as `path:report`, which will create a `report` directory beneath your base directory. See `Reporting` below.
-
 ### `base.mocha`
 
 mocha options. described elsewhere
@@ -147,9 +130,9 @@ mocha options. described elsewhere
 any environment variables you want in the test process.
 
 NOTES:
-- currently `base.env` is only honored if nemo is launching parallel nemo instances (each as its own process). 
+- currently `base.env` is only honored if nemo is launching parallel nemo instances (each as its own process).
 If nemo launches a single nemo instance in the main process, these are ignored.
-- any env variables in your nemo process will be merged into the env for the parallel processes 
+- any env variables in your nemo process will be merged into the env for the parallel processes
 (along with whatever is set under `base.env`)
 
 ### `base.maxConcurrent`
@@ -169,10 +152,10 @@ A summary for all parallel instances can be found at `summary.json`
 
 ### Screenshots
 
-`nemo` will take a screenshot automatically after each test execution (pass or fail). The screenshots will be 
+`nemo` will take a screenshot automatically after each test execution (pass or fail). The screenshots will be
 named based on the respective test name. E.g. `my awesome test.after.png`.
 
-You can use `nemo.runner.snap()` at any point in a test, to grab a screenshot. These screenshots will be named based on 
+You can use `nemo.runner.snap()` at any point in a test, to grab a screenshot. These screenshots will be named based on
 the respective test name, and number of screenshots taken using `nemo.runner.snap()`. E.g.
 - `my awesome test.1.png`
 - `my awesome test.2.png`
@@ -199,9 +182,9 @@ In addition to `profile` and `grep`, are the dimensions `file` and `data`.
 
 #### Parallel by `data`
 
-`data` will multiply the existing # of instances by the # of keys found under `profiles.base.data`. It can also be overriden per-profile. It will also replace 
+`data` will multiply the existing # of instances by the # of keys found under `profiles.base.data`. It can also be overriden per-profile. It will also replace
  `nemo.data` with the value of each keyed object. In other words, you can use this to do parallel, data-driven testing.
- 
+
 If you have the following base profile configuration:
 
 ```js

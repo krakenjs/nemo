@@ -1,3 +1,8 @@
+## v4.0.0-alpha.3
+
+- add datastore capability
+- add scaffold capability
+
 ## v4.0.0-alpha.1
 
 - rename from nemo-runner to nemo

@@ -1,0 +1,7 @@
+{
+    "name": "#name",
+    "email": "#mail",
+    "message": "#msg",
+    "sendButton": "button[type=submit]",
+    "result": "center h1"
+}

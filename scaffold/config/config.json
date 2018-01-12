@@ -1,7 +1,4 @@
 {
-    "driver": {
-        "browser": "phantomjs"
-    },
     "plugins": {
         "view": {
             "module": "nemo-view",
@@ -15,12 +12,13 @@
     },
     "output": {
         "reports": "path:report"
-//        ,"storage": {
-//            "server": "localhost",
-//            "database": "nemo",
-//            "user": "admin",
-//            "password": "admin"
-//        }
+// uncomment if you have an influxdb instance
+        ,"storage": {
+            "server": "localhost",
+            "database": "nemo",
+            "user": "admin",
+            "password": "admin"
+        }
     },
     "profiles": {
         "base": {
@@ -30,19 +28,22 @@
                 "DEBUG": "nemo*"
             },
             "driver": {
-                "builders": {
-                    "withCapabilities": [
-                        {
-                            "browserName": "chrome",
-                            "chromeOptions": {
-                                "args": [
-                                    "headless",
-                                    "window-size=1200,800"
-                                ]
-                            }
-                        }
-                    ]
-                }
+                "browser": "chrome"
+// Use the below "builders" pattern to use the selenium-webdriver Builder class:
+// see: http://seleniumhq.github.io/selenium/docs/api/javascript/module/selenium-webdriver/index_exports_Builder.html
+//                "builders": {
+//                    "withCapabilities": [
+//                        {
+//                            "browserName": "chrome",
+//                            "chromeOptions": {
+//                                "args": [
+//                                    "headless",
+//                                    "window-size=1200,800"
+//                                ]
+//                            }
+//                        }
+//                    ]
+//                }
             },
             "mocha": {
                 "timeout": 180000,
@@ -88,15 +89,12 @@
                 "paypal": {
                     "baseUrl": "https://www.paypal.com",
                     "signupButton": "#signup-button",
-                    //<a href="https://www.paypal.com/us/webapps/mpp/account-selection" id="signup-button" ...>
                     "signupForm": "#cta-btn"
                 },
                 "square": {
                     "baseUrl": "http://www.squareup.com",
                     "signupButton": "a.button[href*=signup]",
-                    //<a class="button" href="/signup/us?lang_code=en">Sign up with Square</a>
                     "signupForm": "body.signup-page"
-                    //<body class="mac unknown ember-application signup-page">
                 }
             }
         },
@@ -120,18 +118,6 @@
             "data": {
                 "useme": "require:./config/useme",
                 "baseUrl": "https://mdn.github.io/learning-area/html/forms/your-first-HTML-form/first-form-styled.html"
-            }
-        },
-        "chrome": {
-            "driver": {
-                "browser": "phantomjs"
-                //just pretending this is another browser :)
-            }
-        },
-        "firefox": {
-            "driver": {
-                "browser": "phantomjs"
-                //just pretending this is another browser :)
             }
         }
     }
