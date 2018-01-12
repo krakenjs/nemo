@@ -15,12 +15,15 @@ Use the scaffold feature
 ```bash
 $ ./node_modules/bin/nemo -X test/functional
 
-        DONE!
+  DONE!
 
-        Next steps:
-        1. Add a script to package.json. E.g. "nemo": "nemo -B test/functional -P pay,search,form"
-        2. Make sure you have chromedriver installed
-        3. Run nemo! "npm run nemo"
+  Next steps:
+  1. Add a script to package.json. E.g. "nemo": "nemo -B test/functional -P pay,search,form"
+  2. Make sure you have latest chrome/chromedriver installed (https://sites.google.com/a/chromium.org/chromedriver/getting-started)
+     - The binary should be in your PATH
+  3. Run nemo! "npm run nemo"
+  4. Explore the files under test/functional
+  5. Learn more: http://nemo.js.org
 
 $
 
