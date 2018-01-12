@@ -32,21 +32,24 @@ $
 ## CLI arguments
 
 ```sh
+$ ./bin/nemo --help
+
   Usage: _nemo [options]
 
   Options:
 
-    -h, --help                   output usage information
     -V, --version                output the version number
     -B, --base-directory <path>  parent directory for config/ and spec/ (or other test file) directories. relative to cwd
     -P, --profile [profile]      which profile(s) to run, out of the configuration
     -G, --grep <pattern>         only run tests matching <pattern>
     -F, --file                   run parallel by file
     -D, --data                   run parallel by data
+    -S, --server                 run the nemo web server
+    -X, --scaffold <path>        inject an example nemo suite under <path>
     --debug-brk                  enable node's debugger breaking on the first line
     --inspect                    activate devtools in chrome
     --no-timeouts                remove timeouts in debug/inspect use case
-
+    -h, --help                   output usage information
 ```
 
 ## Profile options
