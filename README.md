@@ -7,7 +7,7 @@ Node.js solution for running mocha-based selenium-webdriver tests.
 Install nemo
 
 ```sh
-npm install --save-dev nemo@4.0.0-alpha.3 <or current alpha version>
+npm install --save-dev git+ssh://git@github.com/krakenjs/nemo#master
 ```
 
 Use the scaffold feature
