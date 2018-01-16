@@ -1,3 +1,7 @@
+## v4.0.1
+
+- major release for ease of use
+
 ## v4.0.0-alpha.3
 
 - add datastore capability
