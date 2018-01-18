@@ -1,3 +1,7 @@
+## v4.0.3
+
+- upgrade mocha to ^4
+
 ## v4.0.1
 
 - major release for ease of use
