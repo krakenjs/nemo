@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run lint && npm run nemo",
-    "nemo": "DEBUG=nemo:storage*,nemo:instance*,nemo:starter*,mocha:runner ./bin/nemo -B test -G @suite1",
+    "nemo": "./bin/nemo -B test -G @suite1 -L error",
     "nemo:no:selenium:promises": "SELENIUM_PROMISE_MANAGER=0 DEBUG=nemo* ./bin/nemo -B test -P pay -D",
-    "nemo:debug": "DEBUG=nemo:storage*,nemo:instance*,mocha:runner ./bin/nemo -B test -G @suite1 --inspect-brk --inspect",
-    "nemo:parallel": "DEBUG=nemsso* ./bin/nemo -B test -G @suite1,@suite2,@suite3,@suite4 -F",
+    "nemo:debug": "./bin/nemo -B test -G @suite1 --inspect-brk --inspect",
+    "nemo:parallel": "./bin/nemo -B test -G @suite1,@suite2,@suite3,@suite4 -F -L info",
     "nemo:parallel:data": "DEBUG=nemso* ./bin/nemo -B test -P search,pay -D",
     "nemo:search": "SELENIUM_PROMISE_MANAGER=0 DEBUG=nemo* ./bin/nemo -B test -P search -D",
     "nemo:pay": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P pay -D",

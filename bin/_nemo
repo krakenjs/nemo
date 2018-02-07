@@ -10,12 +10,12 @@ var program = require('commander');
 var path = require('path');
 var fs = require('fs');
 var cwd = process.cwd();
-var server = require('../lib/server');
-var scaffold = require('../lib/scaffold');
-var debug = require('debug');
-var log = debug('nemo:log');
-var error = debug('nemo:error');
-var prefontaine = require('../lib/prefontaine');
+var debug;
+var log;
+var error;
+var server;
+var scaffold;
+var prefontaine;
 
 function list(val) {
   return val.split(',');
@@ -34,6 +34,7 @@ program
   .option('-F, --file ', 'run parallel by file')
   .option('-D, --data ', 'run parallel by data')
   .option('-S, --server ', 'run the nemo web server')
+  .option('-L, --logging <level>', 'log level [info|error]')
   .option('-X, --scaffold <path>', 'inject an example nemo suite under <path>')
   .option('--debug-brk', 'enable node\'s debugger breaking on the first line')
   .option('--inspect', 'activate devtools in chrome')
@@ -41,6 +42,18 @@ program
   .parse(process.argv);
 
 program._name = 'nemo';
+if (program.logging) {
+  process.env.DEBUG = (process.env.DEBUG) ? `${process.env.DEBUG},` : '';
+  process.env.DEBUG += (program.logging === 'info') ? 'nemo*' : 'nemo*:error';
+}
+
+// load these after the DEBUG var is set
+server = require('../lib/server');
+scaffold = require('../lib/scaffold');
+prefontaine = require('../lib/prefontaine');
+debug = require('debug');
+log = debug('nemo:log');
+error = debug('nemo:error');
 
 // are we launching the server?
 if (program.server) {
