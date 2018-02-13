@@ -1,3 +1,9 @@
+## v4.1.0
+
+- add easier logging via `-L` flag
+- remove auto-post-test screenshots
+- pull screenshot capability into internal plug-in
+
 ## v4.0.3
 
 - upgrade mocha to ^4
