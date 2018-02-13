@@ -26,8 +26,7 @@
         "base": {
             "tests": "path:./nested*.js",
             "env": {
-                // these only get set when running in parallel (child processes from main process)
-                "DEBUG": "nemo*"
+//                "DEBUG": "nemo*"
             },
             "driver": {
                 "builders": {

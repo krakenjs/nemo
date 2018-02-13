@@ -8,10 +8,10 @@ describe('@suite1@suite2@suite3@suite4@', function () {
     }
     return nemo.driver.get(nemo.data.baseUrl)
       .then(function () {
-        return nemo.runner.snap()
+        return nemo.snap();
       })
       .then(function () {
-        return nemo.runner.snap()
+        return nemo.snap();
       })
   });
   describe('@inner@', function () {
