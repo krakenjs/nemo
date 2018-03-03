@@ -7,6 +7,8 @@
   - don't take screenshots if `snap()` has no path specified and `output.reports` DNE
 - clean up some error/info logging for consistency
 - integrate new [mochawesome-report-generator assetsDir feature](https://github.com/adamgruber/mochawesome-report-generator/blob/master/CHANGELOG.md#added-1)
+- rename modules to be more akin to their purpose
+- add first revision of graphQL endpoint
 
 ## v4.1.0
 
