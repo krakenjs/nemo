@@ -1,3 +1,13 @@
+## Unreleased
+
+- fix logic around `output.reports`
+  - avoid writing `summary.json` to undefined directory
+  - fallback to manually configured mochawesome/xunit if `output.reports` DNE
+  - don't create timestamped directories if `output.reports` DNE
+  - don't take screenshots if `snap()` has no path specified and `output.reports` DNE
+- clean up some error/info logging for consistency
+- integrate new [mochawesome-report-generator assetsDir feature](https://github.com/adamgruber/mochawesome-report-generator/blob/master/CHANGELOG.md#added-1)
+
 ## v4.1.0
 
 - add easier logging via `-L` flag

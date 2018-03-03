@@ -57,11 +57,15 @@ $ ./bin/nemo --help
 
 ### `output`
 
-### `output.reports`
+### `output.reports <optional>`
+
+This convenience setting will create timestamped and tag-based directory structure for reports and
+screenshots when you use [mochawesome](https://www.npmjs.com/package/mochawesome) or [xunit](https://mochajs.org/#xunit) reporters. When you use this, you can omit the specific
+directory/filename settings for those reporters, as nemo will take care of that for you.
 
 Recommended to set this as `path:report`, which will create a `report` directory beneath your base directory. See `Reporting` below.
 
-### `output.storage <optional but cool>`
+### `output.storage <optional>`
 
 You can provide an influxdb endpoint and store test results in it. E.g.
 
@@ -148,8 +152,8 @@ a number which represents the max limit of concurrent suites nemo will execute i
 
 ## Reporting
 
-Recommended reporters are `mochawesome` or `xunit`. If you use either of these, `nemo` will generate timestamped directories for each run.
- The reports will be further separated based on the parallel options. E.g.
+If you use either of the built-in reporters (`xunit` or `mochawesome`), `nemo` will generate
+timestamped directories for each run. The reports will be further separated based on the parallel options. E.g.
 
 ![50%](static/report-output.png)
 
@@ -170,12 +174,16 @@ the respective test name, and number of screenshots taken using `nemo.runner.sna
 
 If you use the `mochawesome` reporter, you will see these screeshots in the `Additional Context` section of the html report.
 
+If you are using `mochawesome` or `xunit` along with the `output.reports` setting, screenshots will be placed in the
+appropriate output directory based on the instance details of the test which generated them.
+
 ## Adding Nemo into the mocha context and vice versa
 
 nemo injects a `nemo` instance into the Mocha context (for it, before, after, etc functions) which can be accessed by
 `this.nemo` within the test suites.
 
 nemo also adds the current test's context to `nemo.mocha`. That can be useful if you want to access or modify the test's context from within a nemo plugin.
+
 ### Parallel functionality
 
 nemo will execute in parallel `-P (profile)` x `-G (grep)` mocha instances. The example above uses "browser" as the
