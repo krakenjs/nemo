@@ -15,13 +15,14 @@
     },
     "output": {
         "reports": "path:report"
-//        ,"storage": {
-//            "server": "localhost",
-//            "database": "nemo",
-//            "user": "admin",
-//            "password": "admin"
-//        }
+        ,"storage": {
+            "server": "localhost",
+            "database": "nemo",
+            "user": "admin",
+            "password": "admin"
+        }
     },
+    "listeners": "require:./config/listeners",
     "profiles": {
         "base": {
             "tests": "path:./nested*.js",
