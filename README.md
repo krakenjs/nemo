@@ -116,6 +116,26 @@ schema: [{
 }]
 ```
 
+### `output.listeners <optional>`
+
+Pass an array of objects to listen for nemo events. Object is of the form:
+
+```
+{
+  type: 'pass',
+  listener: (context, event) => {
+    console.log(`user event listener: test passed ${JSON.stringify(event.tags)}`);
+  }
+}
+```
+
+#### Events
+
+- `master:end`
+- `instance:start`
+- `instance:end`
+- `pass`
+- `fail`
 
 ### `base`
 
