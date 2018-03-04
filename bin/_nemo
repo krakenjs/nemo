@@ -15,7 +15,7 @@ var log;
 var error;
 var server;
 var scaffold;
-var prefontaine;
+var engine;
 
 function list(val) {
   return val.split(',');
@@ -50,7 +50,7 @@ if (program.logging) {
 // load these after the DEBUG var is set
 server = require('../lib/server');
 scaffold = require('../lib/scaffold');
-prefontaine = require('../lib/prefontaine');
+engine = require('../lib/engine');
 debug = require('debug');
 log = debug('nemo:log');
 error = debug('nemo:error');
@@ -65,9 +65,9 @@ if (program.scaffold) {
   return scaffold(program);
 }
 log('CLI launching runner');
-prefontaine(program)
-  .then(function (pre) {
-    return prefontaine.start(pre);
+engine.configure(program)
+  .then(function (configuration) {
+    return engine.start(configuration);
   })
   .catch(function (err) {
     error('problem with start %O', err);

@@ -25,9 +25,6 @@
     "profiles": {
         "base": {
             "tests": "path:./nested*.js",
-            "env": {
-//                "DEBUG": "nemo*"
-            },
             "driver": {
                 "builders": {
                     "withCapabilities": [
@@ -50,10 +47,7 @@
         },
         "xunit": {
             "mocha": {
-                "reporter": "xunit",
-                "reporterOptions": {
-                    "output": "this just tells nemo we want to output files"
-                }
+                "reporter": "xunit"
             }
         },
         "search": {
