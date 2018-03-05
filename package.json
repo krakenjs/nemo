@@ -47,6 +47,7 @@
   "homepage": "https://github.com/krakenjs/nemo#readme",
   "dependencies": {
     "async": "^2.5.0",
+    "babel-register": "^6.26.0",
     "circular-json": "^0.5.1",
     "cli-table": "^0.3.1",
     "commander": "^2.14.1",
@@ -63,6 +64,7 @@
     "mochawesome": "^3.0.2",
     "moment": "^2.21.0",
     "nemo-core": "^1.0.0",
+    "nemo-fpti": "^1.2.0",
     "nemo-view": "^3.1.0",
     "threads": "^0.7.2",
     "uuid": "^3.2.1"
