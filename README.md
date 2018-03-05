@@ -134,8 +134,7 @@ Pass an array of objects to listen for nemo events. Object is of the form:
 - `master:end`
 - `instance:start`
 - `instance:end`
-- `pass`
-- `fail`
+- `test`
 
 ### `base`
 

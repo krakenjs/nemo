@@ -1,9 +1,9 @@
 var table = require('cli-table');
 
 module.exports = [{
-  type: 'pass',
+  type: 'test',
   listener: (context, event) => {
-    console.log(`user event listener: test passed  ${event.test.title}`);
+    console.log(`user event listener: test ${event.test.title} status: ${event.test.state}`);
   }
 }, {
   type: 'master:end',
