@@ -12,7 +12,6 @@ var fs = require('fs');
 var cwd = process.cwd();
 var debug;
 var log;
-var error;
 var server;
 var scaffold;
 var engine;
@@ -53,7 +52,6 @@ scaffold = require('../lib/scaffold');
 engine = require('../lib/engine');
 debug = require('debug');
 log = debug('nemo:log');
-error = debug('nemo:error');
 
 // are we launching the server?
 if (program.server) {
@@ -70,5 +68,5 @@ engine.configure(program)
     return engine.start(configuration);
   })
   .catch(function (err) {
-    error('problem with start %O', err);
+    console.error('problem with start %O', err);
   });

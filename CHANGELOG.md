@@ -9,6 +9,7 @@
 - integrate new [mochawesome-report-generator assetsDir feature](https://github.com/adamgruber/mochawesome-report-generator/blob/master/CHANGELOG.md#added-1)
 - rename modules to be more akin to their purpose
 - add first revision of graphQL endpoint
+- log errors always (remove `debug()` wrapper)
 
 ## v4.1.0
 
