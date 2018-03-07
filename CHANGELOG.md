@@ -10,6 +10,7 @@
 - rename modules to be more akin to their purpose
 - add first revision of graphQL endpoint
 - add event emitter and custom events hook
+- log errors always (remove `debug()` wrapper)
 
 ## v4.1.0
 
