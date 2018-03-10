@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run lint && npm run nemo",
-    "nemo": "./bin/nemo -B test -G @suite1 -L error",
+    "nemo": "./bin/nemo -B test -G @suite1 -L",
     "nemo:no:selenium:promises": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P pay -D",
     "nemo:debug": "./bin/nemo -B test -G @suite1 --inspect-brk --inspect",
     "nemo:parallel": "./bin/nemo -B test -G @suite1,@suite2,@suite3,@suite4 -F",

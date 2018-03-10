@@ -45,7 +45,7 @@ $ ./bin/nemo --help
     -F, --file                   run parallel by file
     -D, --data                   run parallel by data
     -S, --server                 run the nemo web server
-    -L, --logging <level>        log level [info|error]
+    -L, --logging                info level logging (errors log by default)
     -X, --scaffold <path>        inject an example nemo suite under <path>
     --debug-brk                  enable node's debugger breaking on the first line
     --inspect                    activate devtools in chrome
