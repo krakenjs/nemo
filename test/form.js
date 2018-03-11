@@ -8,7 +8,7 @@ describe('@form@', function () {
     await name().sendKeys('Bill Withers');
     await email().sendKeys('bwithers@soul.singer');
     await message().sendKeys(nemo.data.useme);
-    await nemo.runner.snap();
+    await nemo.snap();
     await sendButton().click();
     await result.waitVisible();
     await result.textEquals('405 Not Allowed');
