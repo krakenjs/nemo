@@ -11,7 +11,9 @@
 - add first revision of graphQL endpoint
 - add event emitter and custom events hook
 - log errors always (remove `debug()` wrapper)
-- add fix for test error reporting from [sairamnutheti](https://github.com/sairamnutheti)
+- couple fixes from [sairamnutheti](https://github.com/sairamnutheti)
+  - test errors not reported in mochawesome
+  - form test uses deprecated API call
 
 ## v4.1.0
 
