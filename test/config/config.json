@@ -1,7 +1,7 @@
 {
-    "driver": {
-        "browser": "phantomjs"
-    },
+//    "driver": {
+//        "browser": "phantomjs"
+//    },
     "plugins": {
         "view": {
             "module": "nemo-view",
@@ -33,7 +33,7 @@
                             "browserName": "chrome",
                             "chromeOptions": {
                                 "args": [
-                                    "headless",
+//                                    "headless",
                                     "window-size=1200,800"
                                 ]
                             }
