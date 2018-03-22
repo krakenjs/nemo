@@ -45,7 +45,7 @@ $ ./bin/nemo --help
     -F, --file                   run parallel by file
     -D, --data                   run parallel by data
     -S, --server                 run the nemo web server
-    -L, --logging <level>        log level [info|error]
+    -L, --logging                info level logging (errors log by default)
     -X, --scaffold <path>        inject an example nemo suite under <path>
     --debug-brk                  enable node's debugger breaking on the first line
     --inspect                    activate devtools in chrome
@@ -116,6 +116,25 @@ schema: [{
 }]
 ```
 
+### `output.listeners <optional>`
+
+Pass an array of objects to listen for nemo events. Object is of the form:
+
+```
+{
+  type: 'pass',
+  listener: (context, event) => {
+    console.log(`user event listener: test passed ${JSON.stringify(event.tags)}`);
+  }
+}
+```
+
+#### Events
+
+- `master:end`
+- `instance:start`
+- `instance:end`
+- `test`
 
 ### `base`
 
