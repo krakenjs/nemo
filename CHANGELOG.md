@@ -14,6 +14,8 @@
 - couple fixes from [sairamnutheti](https://github.com/sairamnutheti)
   - test errors not reported in mochawesome
   - form test uses deprecated API call
+- refactor "instance" to remove mocha concern as a separate file
+- remove "instance.reportFile" property and reimplement as a "tag" specified in the reporter custom functions
 
 ## v4.1.0
 
