@@ -1,4 +1,4 @@
-## Unreleased
+## 4.2.0-alpha.1
 
 - fix logic around `output.reports`
   - avoid writing `summary.json` to undefined directory
