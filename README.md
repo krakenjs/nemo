@@ -13,7 +13,7 @@ npm install --save-dev nemo@^4
 Use the scaffold feature
 
 ```bash
-$ ./node_modules/bin/nemo -X test/functional
+$ ./node_modules/.bin/nemo -X test/functional
 
   DONE!
 
