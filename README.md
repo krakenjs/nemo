@@ -7,7 +7,7 @@ Node.js solution for running mocha-based selenium-webdriver tests.
 Install nemo
 
 ```sh
-npm install --save-dev git+ssh://git@github.com/krakenjs/nemo#master
+npm install --save-dev nemo@^4
 ```
 
 Use the scaffold feature
@@ -181,9 +181,6 @@ In the above example, parallel options were "profile", "file", and "data".
 A summary for all parallel instances can be found at `summary.json`
 
 ### Screenshots
-
-`nemo` will take a screenshot automatically after each test execution (pass or fail). The screenshots will be
-named based on the respective test name. E.g. `my awesome test.after.png`.
 
 You can use `nemo.runner.snap()` at any point in a test, to grab a screenshot. These screenshots will be named based on
 the respective test name, and number of screenshots taken using `nemo.runner.snap()`. E.g.
