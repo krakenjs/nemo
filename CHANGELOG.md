@@ -1,4 +1,4 @@
-## 4.2.0-alpha.1
+## 4.2.0
 
 - fix logic around `output.reports`
   - avoid writing `summary.json` to undefined directory
@@ -16,6 +16,7 @@
   - form test uses deprecated API call
 - refactor "instance" to remove mocha concern as a separate file
 - remove "instance.reportFile" property and reimplement as a "tag" specified in the reporter custom functions
+- truncate "reportFile" tag by removing common report path for better console output
 
 ## v4.1.0
 
