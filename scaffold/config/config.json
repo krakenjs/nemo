@@ -22,7 +22,7 @@
     },
     "profiles": {
         "base": {
-            "tests": "path:./nested*.js",
+            "tests": "path:./*.js",
 //            "env": {
 //                 these only get set when running in parallel (child processes from main process)
 //                "DEBUG": "nemo*"
