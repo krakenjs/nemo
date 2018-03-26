@@ -1,3 +1,7 @@
+## 4.2.1
+
+- modify scaffold to favor CLI arg -L over env variable in config
+
 ## 4.2.0
 
 - fix logic around `output.reports`
