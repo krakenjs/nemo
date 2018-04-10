@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- remove conditional around "zero tests" check in mocha runner
+
 ## 4.2.1
 
 - modify scaffold to favor CLI arg -L over env variable in config
