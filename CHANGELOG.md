@@ -1,4 +1,8 @@
-## 4.7.0 
+## UNRELEASED
+
+- remove conditional around "zero tests" check in mocha runner
+
+## 4.7.0
 
 ### Feature
 
