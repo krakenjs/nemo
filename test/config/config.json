@@ -127,6 +127,7 @@
                 "browser": "phantomjs"
                 //just pretending this is another browser :)
             }
-        }
+        },
+        "dynamic": "exec:./config/dynamic"
     }
 }

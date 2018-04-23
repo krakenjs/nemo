@@ -24,6 +24,8 @@ function cwdPath(rel) {
   return path.resolve(cwd, rel);
 }
 
+var allowUnknownArgs = (process.argv.indexOf('-U') > -1) || (process.argv.indexOf('--allow-unknown-args') > -1);
+
 program
   .version(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version)
   .usage('[options]')
@@ -35,9 +37,11 @@ program
   .option('-S, --server ', 'run the nemo web server')
   .option('-L, --logging ', 'info level logging (errors log by default)')
   .option('-X, --scaffold <path>', 'inject an example nemo suite under <path>')
+  .option('-U, --allow-unknown-args', 'allow command line arguments not specified by Nemo')
   .option('--debug-brk', 'enable node\'s debugger breaking on the first line')
   .option('--inspect', 'activate devtools in chrome')
   .option('--no-timeouts', 'remove timeouts in debug/inspect use case')
+  .allowUnknownOption(allowUnknownArgs)
   .parse(process.argv);
 
 program._name = 'nemo';
@@ -52,6 +56,10 @@ scaffold = require('../lib/scaffold');
 engine = require('../lib/engine');
 debug = require('debug');
 log = debug('nemo:log');
+
+if(allowUnknownArgs) {
+  log('allowing unknown command line arguments');
+}
 
 // are we launching the server?
 if (program.server) {
