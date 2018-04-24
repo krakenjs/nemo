@@ -276,7 +276,7 @@ By default, Nemo will not accept CLI arguments that are not listed under [CLI Ar
 
 Custom arguments can be useful for programmatically customizing Nemo configuration.  
 
-Use `--U` or `--allow-unknown-args` to prevent Nemo from validating CLI arguments
+Use `-U` or `--allow-unknown-args` to prevent Nemo from validating CLI arguments
 
 ```sh
 $ ./bin/nemo -U --myCustomArg myValue --anotherArg
