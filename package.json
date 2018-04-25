@@ -39,7 +39,8 @@
   "contributors": [
     "grawk <mattedelman@gmail.com>",
     "Kurt Weiberth <kurt.weiberth@gmail.com>",
-    "Ethan Godt <ethan@ethangodt.com>"
+    "Ethan Godt <ethan@ethangodt.com>",
+    "Alex Feldman <alexfeldman@gmail.com> (https://github.com/Noyabronok)"
   ],
   "license": "Apache-2.0",
   "bugs": {
