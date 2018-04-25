@@ -3,3 +3,4 @@ node_modules
 .idea
 test/report
 scaffold/report
+.DS_Store

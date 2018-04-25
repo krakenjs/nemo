@@ -1,3 +1,6 @@
+## UNRELEASED
+- add `-U` or `--allow-unknown-args` to prevent Nemo from validating CLI arguments
+
 ## 4.2.1
 
 - modify scaffold to favor CLI arg -L over env variable in config

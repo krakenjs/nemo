@@ -47,6 +47,7 @@ $ ./bin/nemo --help
     -S, --server                 run the nemo web server
     -L, --logging                info level logging (errors log by default)
     -X, --scaffold <path>        inject an example nemo suite under <path>
+    -U, --allow-unknown-args     allow command line arguments not specified by Nemo
     --debug-brk                  enable node's debugger breaking on the first line
     --inspect                    activate devtools in chrome
     --no-timeouts                remove timeouts in debug/inspect use case
@@ -268,3 +269,15 @@ You should add this to the `"mocha"` property within `"profiles"` of `config.jso
 ```
 
 `nemo` creates `mocha` instances programmatically. Unfortunately, not all `mocha` command line options are available when instantiating it this way. One of the arguments that is **not** supported is the `--require` flag, which useful if you want to `require` a module, e.g. `babel-register` for transpilation. Thus, we added a `"require"` property in `config.json`, which takes a string of a single npm module name, or an array of npm module names. If it is an array, `nemo` will `require` each one before instantiating the `mocha` instances.
+
+## Custom CLI Options
+
+By default, Nemo will not accept CLI arguments that are not listed under [CLI Arguments](#cli-arguments) 
+
+Custom arguments can be useful for programmatically customizing Nemo configuration.  
+
+Use `-U` or `--allow-unknown-args` to prevent Nemo from validating CLI arguments
+
+```sh
+$ ./bin/nemo -U --myCustomArg myValue --anotherArg
+```
