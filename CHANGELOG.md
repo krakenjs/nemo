@@ -1,4 +1,4 @@
-## Unreleased
+## 4.3.1 
 
 - add nemo to mocha lifecycle context so its available to before/after/beforeEach/afterEach
 
