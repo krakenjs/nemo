@@ -1,3 +1,7 @@
+## Unreleased
+
+- add nemo to mocha lifecycle context so its available to before/after/beforeEach/afterEach
+
 ## 4.3.0
 
 - add `-U` or `--allow-unknown-args` to prevent Nemo from validating CLI arguments
