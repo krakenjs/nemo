@@ -26,6 +26,7 @@
     "profiles": {
         "base": {
             "tests": "path:./nested*.js",
+            "driverPerTest": false,
             "driver": {
                 "builders": {
                     "withCapabilities": [
