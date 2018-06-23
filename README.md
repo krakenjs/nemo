@@ -201,18 +201,18 @@ nemo injects a `nemo` instance into the Mocha context (for it, before, after, et
 
 nemo also adds the current test's context to `nemo.mocha`. That can be useful if you want to access or modify the test's context from within a nemo plugin.
 
-### Parallel functionality
+## Parallel functionality
 
 nemo will execute in parallel `-P (profile)` x `-G (grep)` mocha instances. The example above uses "browser" as the
 profile dimension and suite name as the "grep" dimension. Giving 2x2=4 parallel executions.
 
 In addition to `profile` and `grep`, are the dimensions `file` and `data`.
 
-#### Parallel by `file`
+### Parallel by `file`
 
 `file` will multiply the existing # of instances by the # of files selected by your configuration.
 
-#### Parallel by `data`
+### Parallel by `data`
 
 `data` will multiply the existing # of instances by the # of keys found under `profiles.base.data`. It can also be overriden per-profile. It will also replace
  `nemo.data` with the value of each keyed object. In other words, you can use this to do parallel, data-driven testing.
@@ -244,12 +244,12 @@ it('@loadHome@', function () {
 });
 ```
 
-#### Parallel reporting
+### Parallel reporting
 
 Using a reporter which gives file output will be the most beneficial. `nemo` comes out of the box, ready to use `mochawesome` or `xunit` for outputting a report per parallel instance.
 
 
-### Mocha options
+## Mocha options
 
 The properties passed in to the `"mocha"` property of `config.json` will be applied to the `mocha` instances that are created. In general, these properties correlate with the `mocha` command line arguments. E.g. if you want this:
 
@@ -270,14 +270,47 @@ You should add this to the `"mocha"` property within `"profiles"` of `config.jso
 
 `nemo` creates `mocha` instances programmatically. Unfortunately, not all `mocha` command line options are available when instantiating it this way. One of the arguments that is **not** supported is the `--require` flag, which useful if you want to `require` a module, e.g. `babel-register` for transpilation. Thus, we added a `"require"` property in `config.json`, which takes a string of a single npm module name, or an array of npm module names. If it is an array, `nemo` will `require` each one before instantiating the `mocha` instances.
 
-## Custom CLI Options
+## Webdriver lifecycle options
 
-By default, Nemo will not accept CLI arguments that are not listed under [CLI Arguments](#cli-arguments) 
+`<profile>.driverPerTest`
 
-Custom arguments can be useful for programmatically customizing Nemo configuration.  
+Leave this unset, or set to false for a webdriver per Suite. Set to true for a webdriver per test
+
+Example (find this in the test configuration):
+
+```js
+...
+"driverPerSuite": {
+    "tests": "path:./lifecycle.js",
+    "driverPerTest": false,
+    "mocha": {
+        "grep": "@entireSuite@"
+    }
+},
+"driverPerTest": {
+    "tests": "path:./lifecycle.js",
+    "driverPerTest": true,
+    "mocha": {
+        "grep": "@eachTest@"
+    }
+}
+...
+```
+
+Please note: When using the `driverPerTest` option, there will be no `nemo` instance in the `before`/`after` lifecycle
+context.
+
+## Custom CLI Options (feature incomplete)
+
+By default, Nemo will not accept CLI arguments that are not listed under [CLI Arguments](#cli-arguments)
+
+Custom arguments can be useful for programmatically customizing Nemo configuration.
 
 Use `-U` or `--allow-unknown-args` to prevent Nemo from validating CLI arguments
 
 ```sh
 $ ./bin/nemo -U --myCustomArg myValue --anotherArg
 ```
+
+_Further enhancement must be made in order to take advantage of custom arguments when running in parallel mode. Please
+see https://github.com/krakenjs/nemo/issues/21_

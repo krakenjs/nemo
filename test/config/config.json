@@ -26,7 +26,6 @@
     "profiles": {
         "base": {
             "tests": "path:./nested*.js",
-            "driverPerTest": false,
             "driver": {
                 "builders": {
                     "withCapabilities": [
@@ -50,6 +49,20 @@
         "xunit": {
             "mocha": {
                 "reporter": "xunit"
+            }
+        },
+        "driverPerSuite": {
+            "tests": "path:./lifecycle.js",
+            "driverPerTest": false,
+            "mocha": {
+                "grep": "@entireSuite@"
+            }
+        },
+        "driverPerTest": {
+            "tests": "path:./lifecycle.js",
+            "driverPerTest": true,
+            "mocha": {
+                "grep": "@eachTest@"
             }
         },
         "search": {
@@ -92,21 +105,6 @@
                     //<a class="button" href="/signup/us?lang_code=en">Sign up with Square</a>
                     "signupForm": "body.signup-page"
                     //<body class="mac unknown ember-application signup-page">
-                }
-            }
-        },
-        "trivial": {
-            "tests": "path:./trivial.js",
-            "parallel": "data",
-            "data": {
-                "amazon": {
-                    "baseUrl": "http://www.amazon.com"
-                },
-                "ebay": {
-                    "baseUrl": "http://www.ebay.com"
-                },
-                "google": {
-                    "baseUrl": "http://www.google.com"
                 }
             }
         },

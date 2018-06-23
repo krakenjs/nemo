@@ -1,4 +1,10 @@
-## 4.3.1 
+## UNRELEASED
+
+- add `<profile>.driverPerTest`
+  - `false` (default): current behavior. single webdriver/nemo instance per Mocha Suite
+  - `true`: new behavior. new webdriver/nemo instance per Mocha Test
+
+## 4.3.1
 
 - add nemo to mocha lifecycle context so its available to before/after/beforeEach/afterEach
 
