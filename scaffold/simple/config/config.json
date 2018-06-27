@@ -4,9 +4,6 @@
             "module": "nemo-view"
         }
     },
-    "data": {
-        "baseUrl": "https://www.google.com"
-    },
     "output": {
         "reports": "path:report"
     },
@@ -15,6 +12,9 @@
             "tests": "path:./*.js",
             "driver": {
                 "browser": "chrome"
+            },
+            "data": {
+                "baseUrl": "https://www.google.com"
             },
             "mocha": {
                 "timeout": 180000,
