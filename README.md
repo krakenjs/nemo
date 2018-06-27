@@ -52,7 +52,8 @@ $ ./bin/nemo --help
     -D, --data                   run parallel by data
     -S, --server                 run the nemo web server
     -L, --logging                info level logging (errors log by default)
-    -X, --scaffold <path>        inject an example nemo suite under <path>
+    -X, --scaffold <path>          inject an example nemo suite under <path>
+    -Z, --scaffold-complex <path>  inject a full-featured (complex) example nemo suite under <path>
     -U, --allow-unknown-args     allow command line arguments not specified by Nemo
     --debug-brk                  enable node's debugger breaking on the first line
     --inspect                    activate devtools in chrome
