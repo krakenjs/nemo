@@ -1,4 +1,4 @@
-## UNRELEASED
+## 4.4.0
 
 - add `<profile>.driverPerTest`
   - `false` (default): current behavior. single webdriver/nemo instance per Mocha Suite
