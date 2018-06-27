@@ -37,6 +37,7 @@ program
   .option('-S, --server ', 'run the nemo web server')
   .option('-L, --logging ', 'info level logging (errors log by default)')
   .option('-X, --scaffold <path>', 'inject an example nemo suite under <path>')
+  .option('-Z, --scaffold-complex <path>', 'inject a full-featured (complex) example nemo suite under <path>')
   .option('-U, --allow-unknown-args', 'allow command line arguments not specified by Nemo')
   .option('--debug-brk', 'enable node\'s debugger breaking on the first line')
   .option('--inspect', 'activate devtools in chrome')
@@ -68,7 +69,11 @@ if (program.server) {
 }
 if (program.scaffold) {
   log('launching scaffold');
-  return scaffold(program);
+  return scaffold.simple(program);
+}
+if (program.scaffoldComplex) {
+  log('launching scaffold-complex');
+  return scaffold.complex(program);
 }
 log('CLI launching runner');
 engine.configure(program)

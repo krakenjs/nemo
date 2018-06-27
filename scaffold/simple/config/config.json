@@ -1,0 +1,25 @@
+{
+    "plugins": {
+        "view": {
+            "module": "nemo-view"
+        }
+    },
+    "data": {
+        "baseUrl": "https://www.google.com"
+    },
+    "output": {
+        "reports": "path:report"
+    },
+    "profiles": {
+        "base": {
+            "tests": "path:./*.js",
+            "driver": {
+                "browser": "chrome"
+            },
+            "mocha": {
+                "timeout": 180000,
+                "reporter": "mochawesome"
+            }
+        }
+    }
+}

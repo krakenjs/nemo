@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- adding a "simple" suite to the scaffold feature
+
 ## 4.4.0
 
 - add `<profile>.driverPerTest`

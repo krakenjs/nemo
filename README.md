@@ -18,7 +18,7 @@ $ ./node_modules/.bin/nemo -X test/functional
   DONE!
 
   Next steps:
-  1. Add a script to package.json. E.g. "nemo": "nemo -B test/functional -P pay,search,form"
+  1. Add a script to package.json. E.g. "nemo": "nemo -B test/functional"
   2. Make sure you have latest chrome/chromedriver installed (https://sites.google.com/a/chromium.org/chromedriver/getting-started)
      - The binary should be in your PATH
   3. Run nemo! "npm run nemo"
@@ -27,6 +27,12 @@ $ ./node_modules/.bin/nemo -X test/functional
 
 $
 
+```
+
+For a more complex, fully-featured suite:
+
+```bash
+$ ./node_modules/.bin/nemo -Z test/functional
 ```
 
 ## CLI arguments
