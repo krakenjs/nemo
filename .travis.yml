@@ -1,8 +1,8 @@
 dist: trusty
-#addons:
-#  chrome: stable
+addons:
+  chrome: stable
 before_install:
-  - curl https://intoli.com/install-google-chrome.sh | bash
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
   - npm install -g chromedriver
 language: node_js
 node_js:
