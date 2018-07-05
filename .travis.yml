@@ -1,8 +1,8 @@
 dist: trusty
-addons:
-  chrome: stable
+#addons:
+#  chrome: stable
 before_install:
-  - # start your web application and listen on `localhost`
+  - curl https://intoli.com/install-google-chrome.sh | bash
   - npm install -g chromedriver
 language: node_js
 node_js:

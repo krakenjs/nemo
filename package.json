@@ -47,14 +47,14 @@
   },
   "homepage": "https://github.com/krakenjs/nemo#readme",
   "dependencies": {
-    "async": "^2.5.0",
-    "circular-json": "^0.5.1",
+    "async": "^2.6.1",
+    "circular-json": "^0.5.5",
     "cli-table": "^0.3.1",
-    "commander": "^2.14.1",
+    "commander": "^2.16.0",
     "debug": "^2.6.3",
-    "express": "^4.16.2",
+    "express": "^4.16.3",
     "express-graphql": "^0.6.12",
-    "filenamify": "^2.0.0",
+    "filenamify": "^2.1.0",
     "fs-extra": "^5.0.0",
     "glob": "^7.1.1",
     "graphql": "^0.11.7",
@@ -63,11 +63,11 @@
     "minimist": "^1.2.0",
     "mocha": "^4",
     "mochawesome": "^3.0.2",
-    "moment": "^2.21.0",
+    "moment": "^2.22.2",
     "nemo-core": "^1.0.0",
     "nemo-view": "^3.1.0",
     "threads": "^0.7.2",
-    "uuid": "^3.2.1"
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "eslint": "^3.19.0",
