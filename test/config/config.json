@@ -1,7 +1,4 @@
 {
-    "driver": {
-        "browser": "phantomjs"
-    },
     "plugins": {
         "view": {
             "module": "nemo-view",
