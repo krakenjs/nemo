@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- fix driverPerTest: true afterEach context so driver will quit
+
 ## 4.4.0
 
 - add `<profile>.driverPerTest`
