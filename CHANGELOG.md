@@ -1,4 +1,4 @@
-## UNRELEASED
+## 4.4.1
 
 - fix driverPerTest: true afterEach context so driver will quit
 
