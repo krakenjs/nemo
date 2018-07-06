@@ -31,6 +31,7 @@
                             "chromeOptions": {
                                 "args": [
                                     "headless",
+                                    "disable-gpu",
                                     "window-size=1200,800"
                                 ]
                             }
