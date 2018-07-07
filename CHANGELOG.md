@@ -1,3 +1,8 @@
+## unreleased
+
+- feature: pull in nemo-core@1.1 to use custom driver and shortstop handler prepend features
+  - allows shortstop handlers to be consumed at initial config read, and at test instance config read
+
 ## 4.4.1
 
 - fix driverPerTest: true afterEach context so driver will quit
