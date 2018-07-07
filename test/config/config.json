@@ -1,7 +1,4 @@
 {
-    "driver": {
-        "browser": "phantomjs"
-    },
     "plugins": {
         "view": {
             "module": "nemo-view",
@@ -30,13 +27,14 @@
                 "builders": {
                     "withCapabilities": [
                         {
-                            "browserName": "chrome",
+                            "browserName": "chrome"
                             "chromeOptions": {
                                 "args": [
                                     "headless",
                                     "window-size=1200,800"
                                 ]
                             }
+
                         }
                     ]
                 }
@@ -45,6 +43,10 @@
                 "timeout": 180000,
                 "reporter": "mochawesome"
             }
+        },
+        "customDriver": {
+            "tests": "path:./nested.js",
+            "driver": "_require:./config/driver.chrome.mobile"
         },
         "xunit": {
             "mocha": {
