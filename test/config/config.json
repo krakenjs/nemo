@@ -27,7 +27,7 @@
                 "builders": {
                     "withCapabilities": [
                         {
-                            "browserName": "chrome"
+                            "browserName": "chrome",
                             "chromeOptions": {
                                 "args": [
                                     "headless",
