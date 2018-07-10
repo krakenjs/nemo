@@ -1,4 +1,4 @@
-## unreleased
+## 4.5.0
 
 - feature: merge nemo.data from base profile with parallel-data data. adding lodash.omit
 - feature: pull in nemo-core@1.1 to use custom driver feature
