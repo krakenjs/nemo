@@ -1,4 +1,4 @@
-## UNRELEASED
+## 4.5.1
 
 - adding a "simple" suite to the scaffold feature
 
