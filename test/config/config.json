@@ -46,7 +46,7 @@
         },
         "customDriver": {
             "tests": "path:./nested.js",
-            "driver": "_require:./config/driver.chrome.mobile"
+            "driver": "./config/driver.chrome.mobile"
         },
         "xunit": {
             "mocha": {
