@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- adding a "simple" suite to the scaffold feature
+
 ## 4.5.0
 
 - feature: merge nemo.data from base profile with parallel-data data. adding lodash.omit
@@ -7,7 +11,7 @@
 ## 4.4.1
 
 - fix driverPerTest: true afterEach context so driver will quit
-
+d
 ## 4.4.0
 
 - add `<profile>.driverPerTest`

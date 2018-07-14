@@ -18,7 +18,7 @@ $ ./node_modules/.bin/nemo -X test/functional
   DONE!
 
   Next steps:
-  1. Add a script to package.json. E.g. "nemo": "nemo -B test/functional -P pay,search,form"
+  1. Add a script to package.json. E.g. "nemo": "nemo -B test/functional"
   2. Make sure you have latest chrome/chromedriver installed (https://sites.google.com/a/chromium.org/chromedriver/getting-started)
      - The binary should be in your PATH
   3. Run nemo! "npm run nemo"
@@ -27,6 +27,12 @@ $ ./node_modules/.bin/nemo -X test/functional
 
 $
 
+```
+
+For a more complex, fully-featured suite:
+
+```bash
+$ ./node_modules/.bin/nemo -Z test/functional
 ```
 
 ## CLI arguments
@@ -46,7 +52,8 @@ $ ./bin/nemo --help
     -D, --data                   run parallel by data
     -S, --server                 run the nemo web server
     -L, --logging                info level logging (errors log by default)
-    -X, --scaffold <path>        inject an example nemo suite under <path>
+    -X, --scaffold <path>          inject an example nemo suite under <path>
+    -Z, --scaffold-complex <path>  inject a full-featured (complex) example nemo suite under <path>
     -U, --allow-unknown-args     allow command line arguments not specified by Nemo
     --debug-brk                  enable node's debugger breaking on the first line
     --inspect                    activate devtools in chrome
