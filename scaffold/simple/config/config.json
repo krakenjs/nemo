@@ -18,7 +18,10 @@
             },
             "mocha": {
                 "timeout": 180000,
-                "reporter": "mochawesome"
+                "reporter": "mochawesome",
+                "reporterOptions": {
+                    "quiet": true
+                }
             }
         }
     }
