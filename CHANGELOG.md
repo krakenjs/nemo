@@ -2,6 +2,16 @@
 
 - adding a "simple" suite to the scaffold feature
 
+## 4.5.0
+
+- feature: merge nemo.data from base profile with parallel-data data. adding lodash.omit
+- feature: pull in nemo-core@1.1 to use custom driver feature
+- add logic in runner/mocha.js: if "driver" is a string, prepend with `require:` to load custom driver module
+
+## 4.4.1
+
+- fix driverPerTest: true afterEach context so driver will quit
+d
 ## 4.4.0
 
 - add `<profile>.driverPerTest`
