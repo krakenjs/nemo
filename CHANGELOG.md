@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- calculate and set a non-zero exit code if any test failures
+
 ## 4.5.1
 
 - adding a "simple" suite to the scaffold feature
