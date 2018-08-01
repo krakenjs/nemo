@@ -67,6 +67,9 @@
                 "grep": "@eachTest@"
             }
         },
+        "exit": {
+            "tests": "path:./exit.js"
+        },
         "search": {
             "tests": "path:./search.js",
             "parallel": "data",

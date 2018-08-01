@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- Add `-E` or `--exit` CLI option to force exit after nemo is done running tests
+ 
 ## 4.5.1
 
 - adding a "simple" suite to the scaffold feature
@@ -11,7 +15,7 @@
 ## 4.4.1
 
 - fix driverPerTest: true afterEach context so driver will quit
-d
+
 ## 4.4.0
 
 - add `<profile>.driverPerTest`
