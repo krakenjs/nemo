@@ -55,6 +55,7 @@ $ ./bin/nemo --help
     -X, --scaffold <path>          inject an example nemo suite under <path>
     -Z, --scaffold-complex <path>  inject a full-featured (complex) example nemo suite under <path>
     -U, --allow-unknown-args     allow command line arguments not specified by Nemo
+    -E, --exit                   force shutdown of the event loop after test run: nemo will call process.exit
     --debug-brk                  enable node's debugger breaking on the first line
     --inspect                    activate devtools in chrome
     --no-timeouts                remove timeouts in debug/inspect use case
