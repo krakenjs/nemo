@@ -1,6 +1,6 @@
 {
   "name": "nemo",
-  "version": "4.5.1",
+  "version": "4.6.0",
   "description": "Wrapper to run mocha suites with injected selenium-webdriver instance",
   "main": "index.js",
   "scripts": {
