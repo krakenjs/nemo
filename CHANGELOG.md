@@ -1,7 +1,7 @@
 ## UNRELEASED
 
 - calculate and set a non-zero exit code if any test failures
-- add `-E` or `--exit` CLI option to force exit after nemo is done running tests
+- add `-E` or `--exit` CLI option to force exit after Nemo is done running tests
 
 ## 4.5.1
 
@@ -16,7 +16,7 @@
 ## 4.4.1
 
 - fix driverPerTest: true afterEach context so driver will quit
-d
+
 ## 4.4.0
 
 - add `<profile>.driverPerTest`
