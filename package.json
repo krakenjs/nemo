@@ -7,6 +7,8 @@
     "test": "npm run lint && npm run nemo && npm run nemo:parallel && npm run nemo:lifecycle:suite && npm run nemo:lifecycle:test",
     "nemo": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test",
     "nemo:debug": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test --inspect-brk --inspect",
+    "nemo:exit": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P exit -E",
+    "nemo:fail": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P fail -G @once@,@twice@",
     "nemo:parallel": "./bin/nemo -B test -G @suite1,@suite2,@suite3,@suite4 -F",
     "nemo:parallel:data": "./bin/nemo -B test -P search,pay -D",
     "nemo:search": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P search -D",
@@ -40,7 +42,8 @@
     "grawk <mattedelman@gmail.com>",
     "Kurt Weiberth <kurt.weiberth@gmail.com>",
     "Ethan Godt <ethan@ethangodt.com>",
-    "Alex Feldman <alexfeldman@gmail.com> (https://github.com/Noyabronok)"
+    "Alex Feldman <alexfeldman@gmail.com> (https://github.com/Noyabronok)",
+    "Sairam Nutheti <sai.nutheti@gmail.com>"
   ],
   "license": "Apache-2.0",
   "bugs": {
