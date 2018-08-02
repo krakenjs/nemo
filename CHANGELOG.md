@@ -1,4 +1,4 @@
-## UNRELEASED
+## 4.6.0
 
 - calculate and set a non-zero exit code if any test failures
 - add `-E` or `--exit` CLI option to force exit after Nemo is done running tests
