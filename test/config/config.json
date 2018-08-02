@@ -70,6 +70,9 @@
         "exit": {
             "tests": "path:./exit.js"
         },
+        "fail": {
+            "tests": "path:./fail.js"
+        },
         "search": {
             "tests": "path:./search.js",
             "parallel": "data",
