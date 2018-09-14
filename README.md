@@ -138,12 +138,7 @@ Pass an array of objects to listen for nemo events. Object is of the form:
 }
 ```
 
-#### Events
-
-- `master:end`
-- `instance:start`
-- `instance:end`
-- `test`
+Please see "Events" section for more details
 
 ### `base`
 
@@ -277,6 +272,52 @@ You should add this to the `"mocha"` property within `"profiles"` of `config.jso
 ```
 
 `nemo` creates `mocha` instances programmatically. Unfortunately, not all `mocha` command line options are available when instantiating it this way. One of the arguments that is **not** supported is the `--require` flag, which useful if you want to `require` a module, e.g. `babel-register` for transpilation. Thus, we added a `"require"` property in `config.json`, which takes a string of a single npm module name, or an array of npm module names. If it is an array, `nemo` will `require` each one before instantiating the `mocha` instances.
+
+## Events
+
+Nemo publishes lifecycle events which can help to monitor progress
+
+### `master:end`
+
+Event information:
+
+```js
+
+`InstanceResult[]`
+```
+
+`InstanceResult`
+```js
+{
+  duration: {number},
+  tags: {
+    profile: {string},
+    reportFile: {string}
+    /*, other tags  if present */
+  },
+  testResults: TestResult[]
+}
+```
+
+`TestResult {Mocha test object}`
+
+```js
+{
+  duration: {number}
+  file: {string}(path to test file),
+  fullTitleString: {string}(suite and test title),
+  state: {string}(passed|failed),
+  /*, many more properties */
+}
+```
+
+### `instance:start`
+
+### `instance:end`
+
+### `test`
+
+### `<custom events>`
 
 ## Webdriver lifecycle options
 
