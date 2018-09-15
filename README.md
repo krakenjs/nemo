@@ -283,17 +283,16 @@ Published when an instance starts. The event is an object.
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
+|tags|[`Tags{object}`](#tags)||
 
 ### `instance:end`
 
-Published when an instance ends. The event is an [`InstanceResult`]() object.
+Published when an instance ends. The event is an [`InstanceResult`](#instanceresult) object.
 
 ### `master:end`
 
-This event is published when all instances are completed. The event is an array of `InstanceResult`.
-
-See above for details of `InstanceResult` object.
+This event is published when all instances are completed. The event is an array of [`InstanceResult`](#instanceresult)
+objects.
 
 ### `test`
 
@@ -302,8 +301,8 @@ with other test events from the same instance.
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
-|test|`TestResult`|modified Mocha test object (see elsewhere)|
+|tags|[`Tags{object}`](#tags)||
+|test|[`TestResult`](#testresult)|modified Mocha test object (see elsewhere)|
 |duration|`ms{number}`|Run duration for this test|
 
 
@@ -315,7 +314,7 @@ Nemo will publish this on the main event listener as the following object
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
+|tags|[`Tags{object}`](#tags)||
 |payload|`EventPayload{object}`|user defined, or empty object|
 
 ### Common event objects
@@ -324,11 +323,11 @@ Nemo will publish this on the main event listener as the following object
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`||
-|testResults|`TestResult[]`|Array of test results (see below)|
+|tags|[`Tags{object}`](#tags)||
+|testResults|[`TestResult[]`](#testresult)||
 |duration|`ms{number}`|Run duration for this instance|
 
-#### `TestResult{object}`
+#### `TestResult`
 
 Modified Mocha test object
 
@@ -341,11 +340,15 @@ Modified Mocha test object
 
 _Many other properties. Inspect in debugger for more information_
 
-#### `Tags{object}`
+#### `Tags`
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
+|profile|`{string}`|The profile which spawned this instance|
+|uid|`{string}`|unique identifier for this instance|
+|reportFile (optional)|`{string}`|path to report file for this instance (if generated)|
+|grep (optional)|`{string}`|grep string, if provided|
+|data (optional)|`{string}`|data key for this instance, if parallel by data is being used|
 
 ## Webdriver lifecycle options
 
