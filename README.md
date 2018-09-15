@@ -275,7 +275,7 @@ You should add this to the `"mocha"` property within `"profiles"` of `config.jso
 
 ## Events
 
-Nemo publishes lifecycle events which can help to monitor progress
+Nemo publishes lifecycle events which can help to monitor progress.
 
 ### `instance:start`
 
@@ -283,7 +283,7 @@ Published when an instance starts. The event is an object.
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
+|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
 
 ### `instance:end`
 
@@ -293,7 +293,7 @@ Published when an instance ends. The event is an `InstanceResult` object.
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
+|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
 |testResults|`TestResult[]`|Array of test results (see below)|
 |duration|`ms{number}`|Run duration for this instance|
 
@@ -316,11 +316,12 @@ See above for details of `InstanceResult` object.
 
 ### `test`
 
-This event is published at the conclusion of a test. The event is an object.
+This event is published at the conclusion of a test. The event is an object. You can use "uid" to correlate this event
+with other test events from the same instance.
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
+|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
 |test|`TestResult`|modified Mocha test object (see elsewhere)|
 |duration|`ms{number}`|Run duration for this test|
 
@@ -333,7 +334,7 @@ Nemo will publish this on the main event listener as the following object
 
 |Property|Type|Description|
 |--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
+|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
 |payload|`EventPayload{object}`|user defined|
 
 ## Webdriver lifecycle options
