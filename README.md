@@ -277,47 +277,65 @@ You should add this to the `"mocha"` property within `"profiles"` of `config.jso
 
 Nemo publishes lifecycle events which can help to monitor progress
 
-### `master:end`
-
-Event information:
-
-```js
-
-`InstanceResult[]`
-```
-
-`InstanceResult`
-```js
-{
-  duration: {number},
-  tags: {
-    profile: {string},
-    reportFile: {string}
-    /*, other tags  if present */
-  },
-  testResults: TestResult[]
-}
-```
-
-`TestResult {Mocha test object}`
-
-```js
-{
-  duration: {number}
-  file: {string}(path to test file),
-  fullTitleString: {string}(suite and test title),
-  state: {string}(passed|failed),
-  /*, many more properties */
-}
-```
-
 ### `instance:start`
+
+Published when an instance starts. The event is an object.
+
+|Property|Type|Description|
+|===|===|===|
+|tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
 
 ### `instance:end`
 
+Published when an instance ends. The event is an `InstanceResult` object.
+
+`InstanceResult`
+
+|Property|Type|Description|
+|===|===|===|
+|tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
+|testResults|`TestResult[]`|Array of test results (see below)|
+|duration|`ms{number}`|Run duration for this instance|
+
+`TestResult {object}` (slightly modified Mocha test object)
+
+|Property|Type|Description|
+|===|===|===|
+|file|`{string}`|path to file containing this test|
+|fullTitleString|`{string}`|Suite and test title concatenated|
+|state|`{string}`|`passed` or `failed`|
+|duration|`ms{number}`|Run duration for this test|
+
+_Many other properties. Inspect in debugger for more information_
+
+### `master:end`
+
+This event is published when all instances are completed. The event is an array of `InstanceResult`.
+
+See above for details of `InstanceResult` object.
+
 ### `test`
 
+This event is published at the conclusion of a test. The event is an object.
+
+|Property|Type|Description|
+|===|===|===|
+|tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
+|test|`TestResult`|modified Mocha test object (see elsewhere)|
+|duration|`ms{number}`|Run duration for this test|
+
+
 ### `<custom events>`
+
+You can publish custom events from within your tests using `nemo.runner.emit(EventType{string}, EventPayload{object})`
+
+Nemo will publish this on the main event listener as the following object
+
+{tags: progressObject.payload.tags, payload: customEventPayload}
+|Property|Type|Description|
+|===|===|===|
+|tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
+|payload|`EventPayload{object}`|user defined|
 
 ## Webdriver lifecycle options
 
