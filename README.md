@@ -282,7 +282,7 @@ Nemo publishes lifecycle events which can help to monitor progress
 Published when an instance starts. The event is an object.
 
 |Property|Type|Description|
-|===|===|===|
+|--- |--- |--- |
 |tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
 
 ### `instance:end`
@@ -292,7 +292,7 @@ Published when an instance ends. The event is an `InstanceResult` object.
 `InstanceResult`
 
 |Property|Type|Description|
-|===|===|===|
+|--- |--- |--- |
 |tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
 |testResults|`TestResult[]`|Array of test results (see below)|
 |duration|`ms{number}`|Run duration for this instance|
@@ -300,7 +300,7 @@ Published when an instance ends. The event is an `InstanceResult` object.
 `TestResult {object}` (slightly modified Mocha test object)
 
 |Property|Type|Description|
-|===|===|===|
+|--- |--- |--- |
 |file|`{string}`|path to file containing this test|
 |fullTitleString|`{string}`|Suite and test title concatenated|
 |state|`{string}`|`passed` or `failed`|
@@ -319,7 +319,7 @@ See above for details of `InstanceResult` object.
 This event is published at the conclusion of a test. The event is an object.
 
 |Property|Type|Description|
-|===|===|===|
+|--- |--- |--- |
 |tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
 |test|`TestResult`|modified Mocha test object (see elsewhere)|
 |duration|`ms{number}`|Run duration for this test|
@@ -331,9 +331,8 @@ You can publish custom events from within your tests using `nemo.runner.emit(Eve
 
 Nemo will publish this on the main event listener as the following object
 
-{tags: progressObject.payload.tags, payload: customEventPayload}
 |Property|Type|Description|
-|===|===|===|
+|--- |--- |--- |
 |tags|`Tags{object}`|includes "profile", "reportFile", other generated tags|
 |payload|`EventPayload{object}`|user defined|
 
