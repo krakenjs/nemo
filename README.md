@@ -328,14 +328,14 @@ with other test events from the same instance.
 
 ### `<custom events>`
 
-You can publish custom events from within your tests using `nemo.runner.emit(EventType{string}, EventPayload{object})`
+You can publish custom events from within your tests using `nemo.runner.emit(EventType{string}[, EventPayload{object}])`
 
 Nemo will publish this on the main event listener as the following object
 
 |Property|Type|Description|
 |--- |--- |--- |
 |tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
-|payload|`EventPayload{object}`|user defined|
+|payload|`EventPayload{object}`|user defined, or empty object|
 
 ## Webdriver lifecycle options
 
