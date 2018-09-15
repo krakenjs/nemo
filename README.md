@@ -287,26 +287,7 @@ Published when an instance starts. The event is an object.
 
 ### `instance:end`
 
-Published when an instance ends. The event is an `InstanceResult` object.
-
-`InstanceResult`
-
-|Property|Type|Description|
-|--- |--- |--- |
-|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
-|testResults|`TestResult[]`|Array of test results (see below)|
-|duration|`ms{number}`|Run duration for this instance|
-
-`TestResult {object}` (slightly modified Mocha test object)
-
-|Property|Type|Description|
-|--- |--- |--- |
-|file|`{string}`|path to file containing this test|
-|fullTitleString|`{string}`|Suite and test title concatenated|
-|state|`{string}`|`passed` or `failed`|
-|duration|`ms{number}`|Run duration for this test|
-
-_Many other properties. Inspect in debugger for more information_
+Published when an instance ends. The event is an [`InstanceResult`]() object.
 
 ### `master:end`
 
@@ -336,6 +317,35 @@ Nemo will publish this on the main event listener as the following object
 |--- |--- |--- |
 |tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
 |payload|`EventPayload{object}`|user defined, or empty object|
+
+### Common event objects
+
+#### `InstanceResult`
+
+|Property|Type|Description|
+|--- |--- |--- |
+|tags|`Tags{object}`||
+|testResults|`TestResult[]`|Array of test results (see below)|
+|duration|`ms{number}`|Run duration for this instance|
+
+#### `TestResult{object}`
+
+Modified Mocha test object
+
+|Property|Type|Description|
+|--- |--- |--- |
+|file|`{string}`|path to file containing this test|
+|fullTitleString|`{string}`|Suite and test title concatenated|
+|state|`{string}`|`passed` or `failed`|
+|duration|`ms{number}`|Run duration for this test|
+
+_Many other properties. Inspect in debugger for more information_
+
+#### `Tags{object}`
+
+|Property|Type|Description|
+|--- |--- |--- |
+|tags|`Tags{object}`|includes "profile", "reportFile", "uid", other generated tags|
 
 ## Webdriver lifecycle options
 
