@@ -75,6 +75,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "chromedriver": "^2.42.0",
     "eslint": "^3.19.0",
     "eslint-plugin-es6-recommended": "^0.1.2"
   }

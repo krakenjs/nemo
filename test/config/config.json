@@ -24,24 +24,21 @@
         "base": {
             "tests": "path:./nested*.js",
             "driver": {
-              "browser": "phantomjs"
+                "builders": {
+                    "withCapabilities": [
+                        {
+                            "browserName": "chrome",
+                            "chromeOptions": {
+                                "args": [
+                                    "headless",
+                                    "window-size=1200,800"
+                                ]
+                            }
+
+                        }
+                    ]
+                }
             },
-//            "driver": {
-//                "builders": {
-//                    "withCapabilities": [
-//                        {
-//                            "browserName": "chrome",
-//                            "chromeOptions": {
-//                                "args": [
-//                                    "headless",
-//                                    "window-size=1200,800"
-//                                ]
-//                            }
-//
-//                        }
-//                    ]
-//                }
-//            },
             "mocha": {
                 "timeout": 180000,
                 "reporter": "mochawesome"
