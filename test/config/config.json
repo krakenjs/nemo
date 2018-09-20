@@ -7,38 +7,32 @@
             ]
         }
     },
+    "driver": {
+        "builders": {
+            "withCapabilities": [
+                {
+                    "browserName": "chrome",
+                    "chromeOptions": {
+                        "args": [
+                            "headless",
+                            "window-size=1200,800"
+                        ]
+                    }
+
+                }
+            ]
+        }
+    },
     "data": {
         "baseUrl": "https://www.google.com"
     },
     "output": {
         "listeners": "require:./config/listeners",
         "reports": "path:report"
-//        ,"storage": {
-//            "server": "localhost",
-//            "database": "nemo",
-//            "user": "admin",
-//            "password": "admin"
-//        }
     },
     "profiles": {
         "base": {
             "tests": "path:./nested*.js",
-            "driver": {
-                "builders": {
-                    "withCapabilities": [
-                        {
-                            "browserName": "chrome",
-                            "chromeOptions": {
-                                "args": [
-                                    "headless",
-                                    "window-size=1200,800"
-                                ]
-                            }
-
-                        }
-                    ]
-                }
-            },
             "mocha": {
                 "timeout": 180000,
                 "reporter": "mochawesome"
