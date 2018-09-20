@@ -36,7 +36,9 @@ process.argv.slice(2).forEach(function (arg) {
   }
 });
 
-proc = spawn(process.execPath, args, {stdio: 'inherit', env: process.env});
+// console.log(process.env);
+
+proc = spawn(process.execPath, args, {stdio: 'inherit', shell: true});
 proc.on('exit', function (code, signal) {
   process.on('exit', function () {
     if (signal) {
