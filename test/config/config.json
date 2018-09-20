@@ -15,7 +15,8 @@
                     "chromeOptions": {
                         "args": [
                             "headless",
-                            "window-size=1200,800"
+                            "window-size=1200,800",
+                            "disable-dev-shm-usage"
                         ]
                     }
 
