@@ -138,12 +138,7 @@ Pass an array of objects to listen for nemo events. Object is of the form:
 }
 ```
 
-#### Events
-
-- `master:end`
-- `instance:start`
-- `instance:end`
-- `test`
+Please see "Events" section for more details
 
 ### `base`
 
@@ -277,6 +272,83 @@ You should add this to the `"mocha"` property within `"profiles"` of `config.jso
 ```
 
 `nemo` creates `mocha` instances programmatically. Unfortunately, not all `mocha` command line options are available when instantiating it this way. One of the arguments that is **not** supported is the `--require` flag, which useful if you want to `require` a module, e.g. `babel-register` for transpilation. Thus, we added a `"require"` property in `config.json`, which takes a string of a single npm module name, or an array of npm module names. If it is an array, `nemo` will `require` each one before instantiating the `mocha` instances.
+
+## Events
+
+Nemo publishes lifecycle events which can help to monitor progress.
+
+### `instance:start`
+
+Published when an instance starts. The event is an object.
+
+|Property|Type|Description|
+|--- |--- |--- |
+|tags|[`Tags{object}`](#tags)||
+
+### `instance:end`
+
+Published when an instance ends. The event is an [`InstanceResult`](#instanceresult) object.
+
+### `master:end`
+
+This event is published when all instances are completed. The event is an array of [`InstanceResult`](#instanceresult)
+objects.
+
+### `test`
+
+This event is published at the conclusion of a test. The event is an object. You can use "uid" to correlate this event
+with other test events from the same instance.
+
+|Property|Type|Description|
+|--- |--- |--- |
+|tags|[`Tags{object}`](#tags)||
+|test|[`TestResult`](#testresult)|modified Mocha test object (see elsewhere)|
+|duration|`ms{number}`|Run duration for this test|
+
+
+### `<custom events>`
+
+You can publish custom events from within your tests using `nemo.runner.emit(EventType{string}[, EventPayload{object}])`
+
+Nemo will publish this on the main event listener as the following object
+
+|Property|Type|Description|
+|--- |--- |--- |
+|tags|[`Tags{object}`](#tags)||
+|payload|`EventPayload{object}`|user defined, or empty object|
+
+### Common event objects
+
+#### `InstanceResult`
+
+|Property|Type|Description|
+|--- |--- |--- |
+|tags|[`Tags{object}`](#tags)||
+|testResults|[`TestResult[]`](#testresult)||
+|duration|`ms{number}`|Run duration for this instance|
+
+#### `TestResult`
+
+Modified Mocha test object
+
+|Property|Type|Description|
+|--- |--- |--- |
+|file|`{string}`|path to file containing this test|
+|fullTitleString|`{string}`|Suite and test title concatenated|
+|state|`{string}`|`passed` or `failed`|
+|duration|`ms{number}`|Run duration for this test|
+
+_Many other properties. Inspect in debugger for more information_
+
+#### `Tags`
+
+|Property|Type|Description|
+|--- |--- |--- |
+|profile|`{string}`|The profile which spawned this instance|
+|uid|`{string}`|unique identifier for this instance|
+|reportFile (optional)|`{string}`|path to report file for this instance (if generated)|
+|grep (optional)|`{string}`|grep string, if provided|
+|data (optional)|`{string}`|data key for this instance, if parallel by data is being used|
 
 ## Webdriver lifecycle options
 

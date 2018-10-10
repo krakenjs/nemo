@@ -1,0 +1,10 @@
+{
+  "plugins": {
+    "snap": {
+      "module": "path:../../lib/screenshot"
+    }
+  },
+  "output": {
+    "listeners": "require:./config/listeners"
+  }
+}

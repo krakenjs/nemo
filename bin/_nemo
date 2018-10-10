@@ -6,15 +6,16 @@
  * Module dependencies.
  */
 
-var program = require('commander');
-var path = require('path');
-var fs = require('fs');
-var cwd = process.cwd();
-var debug;
-var log;
-var server;
-var scaffold;
-var engine;
+const program = require('commander');
+const path = require('path');
+const fs = require('fs');
+const cwd = process.cwd();
+let debug;
+let log;
+let server;
+let scaffold;
+let NemoFactory;
+let BaseNemoConfig;
 
 function list(val) {
   return val.split(',');
@@ -24,7 +25,7 @@ function cwdPath(rel) {
   return path.resolve(cwd, rel);
 }
 
-var allowUnknownArgs = (process.argv.indexOf('-U') > -1) || (process.argv.indexOf('--allow-unknown-args') > -1);
+let allowUnknownArgs = (process.argv.indexOf('-U') > -1) || (process.argv.indexOf('--allow-unknown-args') > -1);
 
 program
   .version(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version)
@@ -49,23 +50,23 @@ program
 program._name = 'nemo';
 if (program.logging) {
   process.env.DEBUG = (process.env.DEBUG) ? `${process.env.DEBUG},` : '';
-  process.env.DEBUG += 'nemo*';
+  process.env.DEBUG = process.env.DEBUG + 'nemo*';
 }
 
 // load these after the DEBUG var is set
 server = require('../lib/server');
 scaffold = require('../lib/scaffold');
-engine = require('../lib/engine');
+NemoFactory = require('../lib/nemo');
 debug = require('debug');
-log = debug('nemo:log');
+log = debug('nemo:cli:log');
 
-if(allowUnknownArgs) {
+if (allowUnknownArgs) {
   log('allowing unknown command line arguments');
 }
 
 // are we launching the server?
 if (program.server) {
-  log('CLI launching server');
+  log('launching server');
   return server(program);
 }
 if (program.scaffold) {
@@ -76,10 +77,19 @@ if (program.scaffoldComplex) {
   log('launching scaffold-complex');
   return scaffold.complex(program);
 }
-log('CLI launching runner');
-engine.configure(program)
-  .then(function (configuration) {
-    return engine.start(configuration);
+log('launching runner');
+NemoFactory.configure({baseDirectory: path.resolve(__dirname, '../config/cli')})
+  .then(function (_) {
+    BaseNemoConfig = _.config;
+    BaseNemoConfig.set('baseConfigPath', path.resolve(__dirname, '../config/cli'));
+    return NemoFactory.configure(program);
+  })
+  .then(function (UserNemoConfig) {
+    let AllListeners = UserNemoConfig.config.get('output:listeners') || [];
+    AllListeners = AllListeners.concat(BaseNemoConfig.get('output:listeners'));
+    UserNemoConfig.config.set('output:listeners', AllListeners);
+    BaseNemoConfig.merge(UserNemoConfig.config);
+    return NemoFactory.start({program: program, config: BaseNemoConfig});
   })
   .catch(function (err) {
     console.error('problem with start %O', err);

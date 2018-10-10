@@ -2,13 +2,13 @@
 
 'use strict';
 
-var spawn = require('child_process').spawn;
-var path = require('path');
-var args = [path.join(__dirname, '_nemo')];
-var proc;
+const spawn = require('child_process').spawn;
+const path = require('path');
+const args = [path.join(__dirname, '_nemo')];
+let proc;
 
 process.argv.slice(2).forEach(function (arg) {
-  var flag = arg.split('=')[0];
+  const flag = arg.split('=')[0];
 
   switch (flag) {
   case 'debug':
@@ -35,6 +35,8 @@ process.argv.slice(2).forEach(function (arg) {
     break;
   }
 });
+
+// console.log(process.env);
 
 proc = spawn(process.execPath, args, {stdio: 'inherit'});
 proc.on('exit', function (code, signal) {

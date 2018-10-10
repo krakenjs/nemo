@@ -3,7 +3,7 @@
   "version": "4.6.0",
   "description": "Wrapper to run mocha suites with injected selenium-webdriver instance",
   "scripts": {
-    "test": "npm run lint && npm run nemo && npm run nemo:parallel && npm run nemo:lifecycle:suite && npm run nemo:lifecycle:test",
+    "test": "npm run lint && node test/test-helper clean && npm run nemo && npm run nemo:parallel && npm run nemo:lifecycle:suite && npm run nemo:lifecycle:test && node test/test-helper verify",
     "nemo": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test",
     "nemo:debug": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test --inspect-brk --inspect",
     "nemo:exit": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P exit -E",
@@ -74,6 +74,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "chromedriver": "^2.42.0",
     "eslint": "^3.19.0",
     "eslint-plugin-es6-recommended": "^0.1.2"
   }
