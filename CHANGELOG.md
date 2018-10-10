@@ -6,6 +6,7 @@
   - enables future run contexts to have separate base config
 - pull `snap` plugin config to config file, to cleanly utilize `confit` and enable overriding if ever required
 - fix ES6 eslint issues (var to let/const, etc)
+- replaced circular-json npm package with it's successor: flatted.
 
 ## 4.6.0
 
