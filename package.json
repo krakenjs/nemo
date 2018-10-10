@@ -2,7 +2,6 @@
   "name": "nemo",
   "version": "4.6.0",
   "description": "Wrapper to run mocha suites with injected selenium-webdriver instance",
-  "main": "index.js",
   "scripts": {
     "test": "npm run lint && node test/test-helper clean && npm run nemo && npm run nemo:parallel && npm run nemo:lifecycle:suite && npm run nemo:lifecycle:test && node test/test-helper verify",
     "nemo": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test",
