@@ -1,7 +1,12 @@
-## UNRELEASED
+## 4.7.0 
+
+### Feature
+
+- Add emitter for custom events from test context into master instance as `nemo.runner.emit`
+
+### Fixes
 
 - added post `npm test` verification of report directories/files type/count
-- Add emitter for custom events from test context into master instance as `nemo.runner.emit`
 - pull CLI-context-based config out into config directory
   - enables future run contexts to have separate base config
 - pull `snap` plugin config to config file, to cleanly utilize `confit` and enable overriding if ever required
