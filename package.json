@@ -76,6 +76,7 @@
   "devDependencies": {
     "chromedriver": "^2.43.0",
     "eslint": "^3.19.0",
-    "eslint-plugin-es6-recommended": "^0.1.2"
+    "eslint-plugin-es6-recommended": "^0.1.2",
+    "madr": "^2.1.0"
   }
 }
