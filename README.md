@@ -186,8 +186,8 @@ A summary for all parallel instances can be found at `summary.json`
 
 ### Screenshots
 
-You can use `nemo.runner.snap()` at any point in a test, to grab a screenshot. These screenshots will be named based on
-the respective test name, and number of screenshots taken using `nemo.runner.snap()`. E.g.
+You can use `nemo.snap()` at any point in a test, to grab a screenshot. These screenshots will be named based on
+the respective test name, and number of screenshots taken using `nemo.snap()`. E.g.
 - `my awesome test.1.png`
 - `my awesome test.2.png`
 - `my awesome test.3.png`
