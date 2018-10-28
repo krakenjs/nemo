@@ -12,6 +12,7 @@
     "nemo:parallel:data": "./bin/nemo -B test -P search,pay -D",
     "nemo:search": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P search -D",
     "nemo:pay": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P pay -D",
+    "nemo:keybug": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P keybug -D --inspect-brk",
     "nemo:form": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P form",
     "nemo:lifecycle:suite": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P driverPerSuite",
     "nemo:lifecycle:test": "SELENIUM_PROMISE_MANAGER=0 ./bin/nemo -B test -P driverPerTest",
@@ -66,15 +67,15 @@
     "lodash.omit": "^4.5.0",
     "minimist": "^1.2.0",
     "mocha": "^4",
-    "mochawesome": "^3.1.0",
+    "mochawesome": "^3.1.1",
     "moment": "^2.22.2",
     "nemo-core": "^1",
     "nemo-view": "^3.1.0",
-    "threads": "^0.7.2",
+    "threads": "^0.10.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "chromedriver": "^2.43.0",
+    "chromedriver": "^2.43.1",
     "eslint": "^3.19.0",
     "eslint-plugin-es6-recommended": "^0.1.2"
   }

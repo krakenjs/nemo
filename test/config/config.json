@@ -111,6 +111,21 @@
                 }
             }
         },
+        "keybug": {
+            "tests": "path:./bug.key.js",
+            "parallel": "data",
+            "data": {
+                "A": {
+                    "dataset": 1,
+                    "B": {
+                        "This should be the only property A can access under B": 1
+                    }
+                },
+                "B": {
+                    "dataset": 2
+                }
+            }
+        },
         "form": {
             "tests": "path:./form.js",
             "data": {
