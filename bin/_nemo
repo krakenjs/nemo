@@ -41,6 +41,7 @@ program
   .option('-Z, --scaffold-complex <path>', 'inject a full-featured (complex) example nemo suite under <path>')
   .option('-U, --allow-unknown-args', 'allow command line arguments not specified by Nemo')
   .option('-E, --exit', 'force shutdown of the event loop after test run: nemo will call process.exit')
+  .option('-C, --count', 'report how many tests would run with current configuration')
   .option('--debug-brk', 'enable node\'s debugger breaking on the first line')
   .option('--inspect', 'activate devtools in chrome')
   .option('--no-timeouts', 'remove timeouts in debug/inspect use case')
@@ -89,6 +90,9 @@ NemoFactory.configure({baseDirectory: path.resolve(__dirname, '../config/cli')})
     AllListeners = AllListeners.concat(BaseNemoConfig.get('output:listeners'));
     UserNemoConfig.config.set('output:listeners', AllListeners);
     BaseNemoConfig.merge(UserNemoConfig.config);
+    if (program.count) {
+      return NemoFactory.check({program: program, config: BaseNemoConfig});
+    }
     return NemoFactory.start({program: program, config: BaseNemoConfig});
   })
   .catch(function (err) {
