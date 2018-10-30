@@ -1,6 +1,9 @@
 ## UNRELEASED
 
-- remove conditional around "zero tests" check in mocha runner
+- enhance "zero tests" check in mocha runner
+  - remove "parallel by file" conditional so it runs for every instance
+  - conditionally use "grep" if provided by user
+- add "mkdirp" to output listener, to create `summary.json` even if no tests run
 
 ## 4.7.0
 
