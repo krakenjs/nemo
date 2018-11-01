@@ -1,4 +1,4 @@
-## UNRELEASED
+## 4.8.0 
 
 - enhance "zero tests" check in mocha runner
   - remove "parallel by file" conditional so it runs for every instance
