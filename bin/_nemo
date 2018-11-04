@@ -31,6 +31,7 @@ program
   .version(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version)
   .usage('[options]')
   .option('-B, --base-directory <path>', 'parent directory for config/ and spec/ (or other test file) directories. relative to cwd', cwdPath)
+  .option('-C, --config-file <path>', 'config file. can be JS or JSON')
   .option('-P, --profile [profile]', 'which profile(s) to run, out of the configuration', list)
   .option('-G, --grep <pattern>', 'only run tests matching <pattern>', list)
   .option('-F, --file ', 'run parallel by file')
@@ -82,7 +83,23 @@ NemoFactory.configure({baseDirectory: path.resolve(__dirname, '../config/cli')})
   .then(function (_) {
     BaseNemoConfig = _.config;
     BaseNemoConfig.set('baseConfigPath', path.resolve(__dirname, '../config/cli'));
-    return NemoFactory.configure(program);
+    // are we using baseDirectory and confit?
+    if (program.baseDirectory) {
+      // baseDirectory case
+      return NemoFactory.configure(program);
+    }
+    else if (program.configFile) {
+      // explicit config file case
+      return NemoFactory.configureJS(program);
+    }
+    try {
+      // implicit config file case
+      require(path.resolve(process.cwd(), 'nemo.config'));
+      program.configFile = path.resolve(process.cwd(), 'nemo.config');
+      return NemoFactory.configureJS(program);
+    } catch (err) {
+      throw err;
+    }
   })
   .then(function (UserNemoConfig) {
     let AllListeners = UserNemoConfig.config.get('output:listeners') || [];
@@ -92,5 +109,5 @@ NemoFactory.configure({baseDirectory: path.resolve(__dirname, '../config/cli')})
     return NemoFactory.start({program: program, config: BaseNemoConfig});
   })
   .catch(function (err) {
-    console.error('problem with start %O', err);
+    console.error('problem with starting nemo %O', err);
   });

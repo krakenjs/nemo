@@ -46,6 +46,7 @@ $ ./bin/nemo --help
 
     -V, --version                output the version number
     -B, --base-directory <path>  parent directory for config/ and spec/ (or other test file) directories. relative to cwd
+    -C, --config-file <path>       config file. can be JS or JSON
     -P, --profile [profile]      which profile(s) to run, out of the configuration
     -G, --grep <pattern>         only run tests matching <pattern>
     -F, --file                   run parallel by file
@@ -61,6 +62,22 @@ $ ./bin/nemo --help
     --no-timeouts                remove timeouts in debug/inspect use case
     -h, --help                   output usage information
 ```
+
+## Configuration
+
+You may either use the [confit](https://www.npmjs.com/package/confit) and [shortstop](https://www.npmjs.com/package/shortstop) powered, environment-aware configuration engine, or a plain JavaScript/JSON file.
+
+Use the "scaffold" feature to start with this option.
+
+### Plain JS/JSON
+
+If using a plain JS/JSON file, you can add it as `nemo.config.json` or `nemo.config.js` in the directory you run nemo
+from. Then you can run nemo simply as `./node_modules/.bin/nemo`. Nemo will find your configuration file automatically.
+
+You can also specify a differently named or placed file using the `-C` option as `./node_modules/.bin/nemo -C
+path/to/config/config.js`.
+
+You can find a basic plain configuration file example in the `test/jsconfig` directory.
 
 ## Profile options
 

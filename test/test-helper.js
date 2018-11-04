@@ -16,30 +16,30 @@ if (process.argv[2] === 'clean') {
 else if (process.argv[2] === 'verify') {
   let assertions = [{
     glob: '*/*/',
-    count: 4,
+    count: 5,
     description: 'master level run folders'
   }, {
     glob: '*/*/summary.json',
-    count: 4,
+    count: 5,
     description: 'instance level summary.json files'
   }, {
     glob: '*/*/*/',
-    count: 11,
+    count: 12,
     description: 'instance level run folders'
   },  {
     glob: '*/*/*/nemo-report*',
-    count: 22,
+    count: 24,
     description: 'instance level nemo-report* files'
   }, {
     glob: '*/*/*/*.png',
-    count: 10,
+    count: 12,
     description: 'screen capture png files'
   }];
   assertions.forEach(assertion => {
-    console.log(`verifying ${assertion.count} ${assertion.description}`);
     glob(assertion.glob, {cwd: reportPath}, (err, results) => {
+      console.log(`verifying ${assertion.count} ${assertion.description}`);
       if (err) {
-        console.error(`problem verifying ${assertion.description}`);
+        console.error(`glob error for ${assertion.description}`);
         console.error(err);
         process.exit(1);
       }
