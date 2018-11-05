@@ -67,7 +67,7 @@ $ ./bin/nemo --help
 
 You may either use the [confit](https://www.npmjs.com/package/confit) and [shortstop](https://www.npmjs.com/package/shortstop) powered, environment-aware configuration engine, or a plain JavaScript/JSON file.
 
-Use the "scaffold" feature to start with this option.
+Use the "complex scaffold" feature (`-Z`) to create a suite with this option.
 
 ### Plain JS/JSON
 
@@ -77,7 +77,7 @@ from. Then you can run nemo simply as `./node_modules/.bin/nemo`. Nemo will find
 You can also specify a differently named or placed file using the `-C` option as `./node_modules/.bin/nemo -C
 path/to/config/config.js`.
 
-You can find a basic plain configuration file example in the `test/jsconfig` directory.
+Use the "basic scaffold" feature (`-X`) to create a suite with this option.
 
 ## Profile options
 
