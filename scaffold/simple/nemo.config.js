@@ -1,4 +1,5 @@
-const path = require('path');
+module.exports = dest => {
+  return `const path = require('path');
 
 module.exports = {
   plugins: {
@@ -7,11 +8,11 @@ module.exports = {
     }
   },
   output: {
-    reports: path.resolve(__dirname, 'report')
+    reports: path.resolve('${dest}', 'report')
   },
   profiles: {
     base: {
-      tests: path.resolve(__dirname, '*test.js'),
+      tests: path.resolve('${dest}', '*test.js'),
       driver: {
         browser: 'chrome'
       },
@@ -28,3 +29,4 @@ module.exports = {
     }
   }
 }
+`}
