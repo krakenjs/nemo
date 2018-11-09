@@ -1,4 +1,4 @@
-## 4.9.0-alpha.1
+## 4.9.0
 
 - adding a plain JS/JSON config option (see additional docs in README)
 
