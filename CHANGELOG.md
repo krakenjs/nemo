@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- only merge "base" data in data/parallel mode if we aren't running "base" profile: See #32
+
 ## 4.9.0
 
 - adding a plain JS/JSON config option (see additional docs in README)
