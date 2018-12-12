@@ -25,7 +25,8 @@
         }
     },
     "data": {
-        "baseUrl": "https://www.google.com"
+        "baseUrl": "https://www.google.com",
+        "foo": "bar"
     },
     "output": {
         "listeners": "require:./config/listeners",
@@ -119,17 +120,14 @@
             }
         },
         "chrome": {
-            "driver": {
-                "browser": "phantomjs"
-                //just pretending this is another browser :)
-            }
+
         },
         "firefox": {
-            "driver": {
-                "browser": "phantomjs"
-                //just pretending this is another browser :)
-            }
+
         },
-        "dynamic": "exec:./config/dynamic"
+        "dynamic": "exec:./config/dynamic",
+        "override": {
+            "tests": "path:./override.js"
+        }
     }
 }

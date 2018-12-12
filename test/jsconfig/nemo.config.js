@@ -1,9 +1,13 @@
 const path = require('path');
 
 module.exports = {
+  data: {
+    foo: 'bar'
+  },
   plugins: {
     view: {
-      module: 'nemo-view'
+      module: 'nemo-view',
+      arguments: [path.join(__dirname, '../locator')]
     }
   },
   output: {

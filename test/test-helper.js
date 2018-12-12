@@ -16,23 +16,23 @@ if (process.argv[2] === 'clean') {
 else if (process.argv[2] === 'verify') {
   let assertions = [{
     glob: '*/*/',
-    count: 5,
+    count: 6,
     description: 'master level run folders'
   }, {
     glob: '*/*/summary.json',
-    count: 5,
+    count: 6,
     description: 'instance level summary.json files'
   }, {
     glob: '*/*/*/',
-    count: 12,
+    count: 13,
     description: 'instance level run folders'
   },  {
     glob: '*/*/*/nemo-report*',
-    count: 24,
+    count: 26,
     description: 'instance level nemo-report* files'
   }, {
     glob: '*/*/*/*.png',
-    count: 12,
+    count: 18,
     description: 'screen capture png files'
   }];
   assertions.forEach(assertion => {
