@@ -1,4 +1,4 @@
-## UNRELEASED
+## 4.9.1
 
 - Fix #32: only merge "base" data in data/parallel mode if we aren't running "base" profile
 - Fix #52: root data inclusion and override for plain JS config use case
