@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- Fix: "simple" scaffold not working with nested directory. Promise chaining wasn't waiting for mkdirp
+
 ## 4.9.1
 
 - Fix #32: only merge "base" data in data/parallel mode if we aren't running "base" profile
