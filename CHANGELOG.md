@@ -1,6 +1,7 @@
-## UNRELEASED
+## 4.9.2
 
 - Fix: "simple" scaffold not working with nested directory. Promise chaining wasn't waiting for mkdirp
+- Fix #57: destroyNemo not properly called in Suite.afterAll in mocha.js
 
 ## 4.9.1
 
