@@ -52,7 +52,7 @@
   },
   "homepage": "https://github.com/krakenjs/nemo#readme",
   "dependencies": {
-    "async": "^2.6.1",
+    "async": "^2.6.2",
     "cli-table": "^0.3.1",
     "commander": "^2.19.0",
     "common-path-start": "0.0.1",
@@ -70,16 +70,16 @@
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "mocha": "^4",
-    "mochawesome": "^3.1.0",
+    "mochawesome": "^3.1.1",
     "moment": "^2.22.2",
-    "nemo-core": "^1",
-    "nemo-view": "^3.1.0",
+    "nemo-core": "^1.1.1",
+    "nemo-view": "^3.1.1",
     "threads": "^0.7.2",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
     "chromedriver": "^2.43.0",
-    "eslint": "^3.19.0",
+    "eslint": "^5.15.1",
     "eslint-plugin-es6-recommended": "^0.1.2"
   }
 }
