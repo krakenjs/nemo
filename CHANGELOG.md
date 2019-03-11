@@ -1,3 +1,7 @@
+## UNRELEASED
+
+- fix npm audit issues
+
 ## 4.9.2
 
 - Fix: "simple" scaffold not working with nested directory. Promise chaining wasn't waiting for mkdirp
