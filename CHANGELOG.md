@@ -1,4 +1,4 @@
-## UNRELEASED
+## 4.9.3
 
 - fix npm audit issues
 
