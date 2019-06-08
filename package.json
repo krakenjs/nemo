@@ -53,6 +53,7 @@
   "homepage": "https://github.com/krakenjs/nemo#readme",
   "dependencies": {
     "async": "^2.6.2",
+    "axis.js": "^1.2.1",
     "cli-table": "^0.3.1",
     "commander": "^2.19.0",
     "common-path-start": "0.0.1",

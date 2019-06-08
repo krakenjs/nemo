@@ -144,8 +144,19 @@ schema: [{
 
 ### `output.listeners <optional>`
 
-Pass an array of objects to listen for nemo events. Object is of the form:
+The `output:listeners` property can resolve to a function, an Object, or an Array (or Array of
+Arrays) of functions/objects.
 
+The function form:
+```js
+module.exports = function (emitter) {
+  emitter.on('test', (context, event) => {
+    console.log(`another testlistener ${event.test.title} status: ${event.test.state}`);
+  });
+};
+```
+
+The Object form:
 ```
 {
   type: 'pass',
