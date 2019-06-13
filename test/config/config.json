@@ -29,7 +29,7 @@
         "foo": "bar"
     },
     "output": {
-        "listeners": "require:./config/listeners",
+        "listeners": ["require:./config/listeners", "require:./config/more-listeners"],
         "reports": "path:report"
     },
     "profiles": {

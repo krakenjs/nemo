@@ -1,5 +1,10 @@
 ## UNRELEASED
 
+- Feature: More flexible "listeners" property
+- fix npm audit issues
+
+## 4.9.3
+
 - fix npm audit issues
 
 ## 4.9.2
