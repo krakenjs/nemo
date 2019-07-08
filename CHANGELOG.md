@@ -1,3 +1,7 @@
+## 4.9.5
+
+- fix nemo-core npm audit issues
+
 ## 4.9.4
 
 - Feature: More flexible "listeners" property
