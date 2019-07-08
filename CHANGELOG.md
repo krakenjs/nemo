@@ -1,3 +1,7 @@
+## 4.9.6
+
+- merge/publish greenkeeper update PR https://github.com/krakenjs/nemo/pull/66
+
 ## 4.9.5
 
 - fix nemo-core npm audit issues
