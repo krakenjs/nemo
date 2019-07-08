@@ -1,6 +1,6 @@
 {
   "name": "nemo",
-  "version": "4.9.3",
+  "version": "4.9.4",
   "description": "Wrapper to run mocha suites with injected selenium-webdriver instance",
   "scripts": {
     "test": "npm run lint && node test/test-helper clean && npm run nemo && npm run nemo:parallel && npm run nemo:lifecycle:suite && npm run nemo:lifecycle:test && npm run nemo:jsconfig && npm run nemo:env:override && node test/test-helper verify",
