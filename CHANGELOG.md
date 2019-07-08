@@ -1,4 +1,4 @@
-## UNRELEASED
+## 4.9.4
 
 - Feature: More flexible "listeners" property
 - fix npm audit issues
