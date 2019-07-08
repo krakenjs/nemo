@@ -1,5 +1,7 @@
 # nemo
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/krakenjs/nemo.svg)](https://greenkeeper.io/)
+
 Node.js solution for running mocha-based selenium-webdriver tests.
 
 ## Getting started
