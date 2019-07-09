@@ -15,17 +15,16 @@ npm install --save-dev nemo@^4
 Use the scaffold feature
 
 ```bash
-$ ./node_modules/.bin/nemo -X test/functional
+$ npx nemo -X test/functional
 
   DONE!
 
   Next steps:
-  1. Add a script to package.json. E.g. "nemo": "nemo -B test/functional"
-  2. Make sure you have latest chrome/chromedriver installed (https://sites.google.com/a/chromium.org/chromedriver/getting-started)
+  1. Make sure you have latest chrome/chromedriver installed (https://sites.google.com/a/chromium.org/chromedriver/getting-started)
      - The binary should be in your PATH
-  3. Run nemo! "npm run nemo"
-  4. Explore the files under test/functional
-  5. Learn more: http://nemo.js.org
+  2. Run nemo! "npx nemo"
+  3. Look at nemo.config.js and test/functional/nemo.test.js
+  4. Learn more: http://nemo.js.org
 
 $
 
