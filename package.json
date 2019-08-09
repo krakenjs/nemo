@@ -55,7 +55,7 @@
     "async": "^3.1.0",
     "axis.js": "^1.2.1",
     "cli-table": "^0.3.1",
-    "commander": "^2.19.0",
+    "commander": "^3.0.0",
     "common-path-start": "0.0.3",
     "debug": "^4.1.1",
     "express": "^4.16.4",
