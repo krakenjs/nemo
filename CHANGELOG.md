@@ -1,3 +1,8 @@
+## 4.10.0
+
+- greenkeeper dependency updates
+- add config to force zero exit code (see https://github.com/krakenjs/nemo/pull/64)
+
 ## 4.9.6
 
 - merge/publish greenkeeper update PR https://github.com/krakenjs/nemo/pull/66
