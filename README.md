@@ -192,6 +192,12 @@ mocha options. described elsewhere
 
 any environment variables you want in the test process.
 
+### `base.zeroExitCode`
+
+-if set to true, nemo will always exit with zero code 
+-if set to false, or don't set any value, the exitCode is Math.min(output.totals.fail, 255);
+
+
 NOTES:
 - currently `base.env` is only honored if nemo is launching parallel nemo instances (each as its own process).
 If nemo launches a single nemo instance in the main process, these are ignored.

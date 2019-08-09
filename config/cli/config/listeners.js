@@ -20,7 +20,9 @@ module.exports = [{
     });
     tabl.push(['TOTALS', output.totals.pass, output.totals.fail, output.totals.total]);
     console.log(tabl.toString());
-    process.exitCode = Math.min(output.totals.fail, 255);
+    
+    let zeroExitCode = context.config.get('profiles:base:zeroExitCode') || false
+    process.exitCode = zeroExitCode ? 0 : Math.min(output.totals.fail, 255);
     if (context.program.exit) {
       process.exit();
     }
