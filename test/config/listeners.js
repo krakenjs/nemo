@@ -14,12 +14,12 @@ module.exports = [{
    console.log('suite event fired', event.tags.uid);
  }
 },{
-  type: 'beforesuite',
+  type: 'suite:before',
     listener: (context, event) => {
     console.log('before suite event fired', event.tags.uid);
   }
 },{
-  type: 'beforetest',
+  type: 'test:before',
     listener: (context, event) => {
     console.log('before test fired', event.test.title);
   }
