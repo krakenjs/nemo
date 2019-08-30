@@ -8,4 +8,19 @@ module.exports = [{
   listener: (context, event) => {
     console.log('custom:unittest event fired', event);
   }
+},{
+ type: 'suite',
+ listener: (context, event) => {
+   console.log('suite event fired', event.tags.uid);
+ }
+},{
+  type: 'suite:before',
+    listener: (context, event) => {
+    console.log('before suite event fired', event.tags.uid);
+  }
+},{
+  type: 'test:before',
+    listener: (context, event) => {
+    console.log('before test fired', event.test.title);
+  }
 }];

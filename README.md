@@ -329,6 +329,26 @@ Published when an instance ends. The event is an [`InstanceResult`](#instanceres
 This event is published when all instances are completed. The event is an array of [`InstanceResult`](#instanceresult)
 objects.
 
+### `suite:before`
+
+This event is published when suite execution started
+
+### `suite`
+
+This event is published when suite finish
+
+
+### `test:before`
+
+This event is published when test execution started. The event is an object. You can use "uid" to correlate this event
+with other test events from the same instance.
+
+|Property|Type|Description|
+|--- |--- |--- |
+|tags|[`Tags{object}`](#tags)||
+|test|[`TestResult`](#testresult)|modified Mocha test object, not with all values as test event (see elsewhere)|
+
+
 ### `test`
 
 This event is published at the conclusion of a test. The event is an object. You can use "uid" to correlate this event
