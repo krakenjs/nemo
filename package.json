@@ -81,7 +81,7 @@
     "yargs": "^14.0.0"
   },
   "devDependencies": {
-    "chromedriver": "^76.0.0",
+    "chromedriver": "^77.0.0",
     "eslint": "^6.0.1",
     "eslint-plugin-es6-recommended": "^0.1.2"
   }
