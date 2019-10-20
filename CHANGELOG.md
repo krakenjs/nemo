@@ -1,3 +1,7 @@
+## 4.11.1
+
+- fix type error that is causing when describe.skip is used (https://github.com/krakenjs/nemo/pull/75)
+
 ## 4.11.0
 
 - added suite:before, test:before, suite events (see https://github.com/krakenjs/nemo/pull/71)
