@@ -1,6 +1,7 @@
 ## 4.11.1
 
 - fix type error that is causing when describe.skip is used (https://github.com/krakenjs/nemo/pull/75)
+- skip creating nemo instance when suite has empty tests  (https://github.com/krakenjs/nemo/pull/76)
 
 ## 4.11.0
 
