@@ -82,7 +82,7 @@
   },
   "devDependencies": {
     "chromedriver": "^77.0.0",
-    "eslint": "^6.0.1",
+    "eslint": "6.7.2",
     "eslint-plugin-es6-recommended": "^0.1.2"
   }
 }
