@@ -69,7 +69,7 @@
     "influx": "^5.0.7",
     "lodash.merge": "^4.6.1",
     "lodash.omit": "^4.5.0",
-    "minimist": "^1.2.0",
+    "minimist": "1.2.0",
     "mkdirp": "^0.5.1",
     "mocha": "^6.1.4",
     "mochawesome": "^4.0.1",
