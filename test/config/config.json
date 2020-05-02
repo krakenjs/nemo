@@ -50,14 +50,14 @@
             }
         },
         "driverPerSuite": {
-            "tests": "path:./lifecycle.js",
+            "tests": "path:./lifecycle-suite.js",
             "driverPerTest": false,
             "mocha": {
                 "grep": "@entireSuite@"
             }
         },
         "driverPerTest": {
-            "tests": "path:./lifecycle.js",
+            "tests": "path:./lifecycle-per-test.js",
             "driverPerTest": true,
             "mocha": {
                 "grep": "@eachTest@"

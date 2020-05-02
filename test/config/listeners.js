@@ -23,4 +23,9 @@ module.exports = [{
     listener: (context, event) => {
     console.log('before test fired', event.test.title);
   }
+},{
+  type: 'root:before',
+  listener: (context, event) => {
+    console.log('before root event fired', event.tags.uid);
+  }
 }];

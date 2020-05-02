@@ -431,8 +431,9 @@ Example (find this in the test configuration):
 }
 ...
 ```
+When `driverPerSuite: true` the global `beforeEach` hook will have a `nemo` instance injected, but not when `driverPerSuite: false`
 
-Please note: When using the `driverPerTest` option, there will be no `nemo` instance in the `before`/`after` lifecycle
+Please note: When using the `driverPerTest: true` option, there will be no reliable `nemo` instance in the `before`/`after` lifecycle
 context.
 
 ## Custom CLI Options (feature incomplete)
