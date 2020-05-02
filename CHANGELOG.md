@@ -1,3 +1,14 @@
+## 5.0.0
+
+### Breaking Changes
+- Updated chromedriver dependency to version 81, which requires Node 10
+- Updated minimum requirement to Node 10 from Node 8
+
+### Fix
+
+- Instantiatiate and injects nemo into context on the global beforeEach hook when driverPerTest is true
+- Updated dependency to Mocha 7.1.1 since that is the version that fixes start event firing too early, before it can be monitored. mochajs/mocha#2753
+
 ## 4.11.1
 
 - fix type error that is causing when describe.skip is used (https://github.com/krakenjs/nemo/pull/75)
