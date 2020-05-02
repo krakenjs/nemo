@@ -1,6 +1,6 @@
 {
   "name": "nemo",
-  "version": "5.0.0",
+  "version": "4.12.0",
   "description": "Wrapper to run mocha suites with injected selenium-webdriver instance",
   "scripts": {
     "test": "npm run lint && node test/test-helper clean && npm run nemo && npm run nemo:parallel && npm run nemo:lifecycle:suite && npm run nemo:lifecycle:test && npm run nemo:jsconfig && npm run nemo:env:override && node test/test-helper verify",
@@ -57,7 +57,7 @@
     "async": "^3.1.0",
     "axis.js": "^1.2.1",
     "cli-table": "^0.3.1",
-    "commander": "^3.0.0",
+    "commander": "^4.0.0",
     "common-path-start": "0.0.4",
     "debug": "^4.1.1",
     "express": "^4.16.4",
@@ -71,7 +71,7 @@
     "lodash.merge": "^4.6.1",
     "lodash.omit": "^4.5.0",
     "minimist": "^1.2.0",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.0",
     "mocha": "^7.1.1",
     "mochawesome": "^4.0.1",
     "moment": "^2.22.2",
@@ -79,7 +79,7 @@
     "nemo-view": "^3.1.1",
     "threads": "^0.12.1",
     "uuid": "^3.3.2",
-    "yargs": "^14.0.0"
+    "yargs": "^15.0.1"
   },
   "devDependencies": {
     "chromedriver": "^81.0.0",
