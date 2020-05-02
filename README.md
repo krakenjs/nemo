@@ -306,7 +306,7 @@ You should add this to the `"mocha"` property within `"profiles"` of `config.jso
 }
 ```
 
-`nemo` creates `mocha` instances programmatically. Unfortunately, not all `mocha` command line options are available when instantiating it this way. One of the arguments that is **not** supported is the `--require` flag, which useful if you want to `require` a module, e.g. `babel-register` for transpilation. Thus, we added a `"require"` property in `config.json`, which takes a string of a single npm module name, or an array of npm module names. If it is an array, `nemo` will `require` each one before instantiating the `mocha` instances.
+`nemo` creates `mocha` instances programmatically. Unfortunately, not all `mocha` command line options are available when instantiating it this way. One of the arguments that is **not** supported is the `--require` flag, which useful if you want to `require` a module, e.g. `babel-register` (for Babel v6) or `@babel/register` (for Babel v7) for transpilation. Thus, we added a `"require"` property in `nemo.config.json` profile/base/mocha block, which takes a string of a single npm module name, or an array of npm module names. If it is an array, `nemo` will `require` each one before instantiating the `mocha` instances.
 
 ## Events
 
