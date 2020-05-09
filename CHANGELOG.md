@@ -11,7 +11,6 @@
 
 ### Feature
 
-- Added `instanceId` property to nemo instance for easy identification
 - Added `before:root` event
 
 ## 4.11.1

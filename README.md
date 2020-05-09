@@ -440,10 +440,6 @@ When `driverPerSuite` is `true` the global `beforeEach` hook will have a `nemo` 
 Please note: When using the `driverPerTest` option, there will be no reliable `nemo` instance in the `before`/`after` lifecycle
 context.
 
-### InstanceId
-
-Each nemo instance will be assigned an `instanceId` property, that you can use to uniquely identify a nemo instance.
-
 ## Custom CLI Options (feature incomplete)
 
 By default, Nemo will not accept CLI arguments that are not listed under [CLI Arguments](#cli-arguments)
