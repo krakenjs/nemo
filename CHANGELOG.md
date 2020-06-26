@@ -1,3 +1,6 @@
+## 4.12.1
+
+- fix usage of Mkdirp where we were promisifying (in the scaffold feature), but new version of Mkdirp already returns a promise
 ## 4.12.0
 
 ### Breaking Changes
