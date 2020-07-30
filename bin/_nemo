@@ -87,8 +87,7 @@ NemoFactory.configure({baseDirectory: path.resolve(__dirname, '../config/cli')})
     if (program.baseDirectory) {
       // baseDirectory case
       return NemoFactory.configure(program);
-    }
-    else if (program.configFile) {
+    } else if (program.configFile) {
       // explicit config file case
       return NemoFactory.configureJS(program);
     }
