@@ -92,6 +92,14 @@ directory/filename settings for those reporters, as nemo will take care of that 
 
 Recommended to set this as `path:report`, which will create a `report` directory beneath your base directory. See `Reporting` below.
 
+### `output.pathTimestampFormat <optional>`
+
+This setting overrides the timestamp format of the report directory structure. The default is `MM-DD-YYYY/HH-mm-ss`, which creates nested directories like "09-18-2020/14-09-57" for the test run which occurred on September 18, 2020 at 2:09:57pm in your local time zone.
+
+Setting `pathTimestampFormat` to `YYYY-MM-DD_HH-mm-s`, for example, creates a single directory for each test run using a modified ISO 8601 format (such as "2020-09-18_14-09-57").
+
+The possible formats are provided by [Moment.js](https://momentjs.com/docs/#/displaying/format/).
+
 ### `output.storage <optional>`
 
 You can provide an influxdb endpoint and store test results in it. E.g.
@@ -194,7 +202,7 @@ any environment variables you want in the test process.
 
 ### `base.zeroExitCode`
 
--if set to true, nemo will always exit with zero code 
+-if set to true, nemo will always exit with zero code
 -if set to false, or don't set any value, the exitCode is Math.min(output.totals.fail, 255);
 
 
