@@ -1,3 +1,7 @@
+## 4.12.2
+
+- fix usage of uuid to comply with uuid@8
+
 ## 4.12.1
 
 - fix usage of Mkdirp where we were promisifying (in the scaffold feature), but new version of Mkdirp already returns a promise
