@@ -1,3 +1,8 @@
+## UNRELEASED
+
+- npm audit fix for some vulnerabilities
+- upgrade to mocha@9
+
 ## 4.12.2
 
 - fix usage of uuid to comply with uuid@8
