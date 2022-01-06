@@ -7,23 +7,7 @@
             ]
         }
     },
-    "driver": {
-        "builders": {
-            "withCapabilities": [
-                {
-                    "browserName": "chrome",
-                    "chromeOptions": {
-                        "args": [
-                            "headless",
-                            "window-size=1200,800",
-                            "disable-dev-shm-usage"
-                        ]
-                    }
-
-                }
-            ]
-        }
-    },
+    "driver": "require:./config/driverconfig.chrome",
     "data": {
         "baseUrl": "https://www.google.com",
         "foo": "bar"
@@ -68,6 +52,18 @@
         },
         "fail": {
             "tests": "path:./fail.js"
+        },
+        "temp": {
+            "tests": "path:./search.js",
+            "parallel": "data",
+            "data": {
+                "google": {
+                    "baseUrl": "https://www.google.com",
+                    "input": "input[name=q]",
+                    "button": "input[type=submit][name=btnK]",
+                    "result": "#search"
+                }
+            }
         },
         "search": {
             "tests": "path:./search.js",
