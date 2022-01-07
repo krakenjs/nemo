@@ -6,7 +6,10 @@ module.exports = {
   },
 
   "plugins": ["es6-recommended"],
-
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
   "ecmaFeatures": {
     "arrowFunctions": true,
     "binaryLiterals": true,

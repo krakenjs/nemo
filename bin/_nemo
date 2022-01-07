@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 'use strict';
 
-
 /**
  * Module dependencies.
  */
@@ -24,89 +23,123 @@ function list(val) {
 function cwdPath(rel) {
   return path.resolve(cwd, rel);
 }
+(function () {
+  let allowUnknownArgs =
+    process.argv.indexOf('-U') > -1 ||
+    process.argv.indexOf('--allow-unknown-args') > -1;
 
-let allowUnknownArgs = (process.argv.indexOf('-U') > -1) || (process.argv.indexOf('--allow-unknown-args') > -1);
+  program
+    .version(
+      JSON.parse(
+        fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')
+      ).version
+    )
+    .usage('[options]')
+    .option(
+      '-B, --base-directory <path>',
+      'parent directory for config/ and spec/ (or other test file) directories. relative to cwd',
+      cwdPath
+    )
+    .option('-C, --config-file <path>', 'config file. can be JS or JSON')
+    .option(
+      '-P, --profile [profile]',
+      'which profile(s) to run, out of the configuration',
+      list
+    )
+    .option('-G, --grep <pattern>', 'only run tests matching <pattern>', list)
+    .option('-F, --file ', 'run parallel by file')
+    .option('-D, --data ', 'run parallel by data')
+    .option('-S, --server ', 'run the nemo web server')
+    .option('-L, --logging ', 'info level logging (errors log by default)')
+    .option(
+      '-X, --scaffold <path>',
+      'inject an example nemo suite under <path>'
+    )
+    .option(
+      '-Z, --scaffold-complex <path>',
+      'inject a full-featured (complex) example nemo suite under <path>'
+    )
+    .option(
+      '-U, --allow-unknown-args',
+      'allow command line arguments not specified by Nemo'
+    )
+    .option(
+      '-E, --exit',
+      'force shutdown of the event loop after test run: nemo will call process.exit'
+    )
+    .option('--debug-brk', 'enable node\'s debugger breaking on the first line')
+    .option('--inspect', 'activate devtools in chrome')
+    .option('--no-timeouts', 'remove timeouts in debug/inspect use case')
+    .allowUnknownOption(allowUnknownArgs)
+    .parse(process.argv);
 
-program
-  .version(JSON.parse(fs.readFileSync(path.join(__dirname, '..', 'package.json'), 'utf8')).version)
-  .usage('[options]')
-  .option('-B, --base-directory <path>', 'parent directory for config/ and spec/ (or other test file) directories. relative to cwd', cwdPath)
-  .option('-C, --config-file <path>', 'config file. can be JS or JSON')
-  .option('-P, --profile [profile]', 'which profile(s) to run, out of the configuration', list)
-  .option('-G, --grep <pattern>', 'only run tests matching <pattern>', list)
-  .option('-F, --file ', 'run parallel by file')
-  .option('-D, --data ', 'run parallel by data')
-  .option('-S, --server ', 'run the nemo web server')
-  .option('-L, --logging ', 'info level logging (errors log by default)')
-  .option('-X, --scaffold <path>', 'inject an example nemo suite under <path>')
-  .option('-Z, --scaffold-complex <path>', 'inject a full-featured (complex) example nemo suite under <path>')
-  .option('-U, --allow-unknown-args', 'allow command line arguments not specified by Nemo')
-  .option('-E, --exit', 'force shutdown of the event loop after test run: nemo will call process.exit')
-  .option('--debug-brk', 'enable node\'s debugger breaking on the first line')
-  .option('--inspect', 'activate devtools in chrome')
-  .option('--no-timeouts', 'remove timeouts in debug/inspect use case')
-  .allowUnknownOption(allowUnknownArgs)
-  .parse(process.argv);
+  program._name = 'nemo';
+  if (program.logging) {
+    process.env.DEBUG = process.env.DEBUG ? `${process.env.DEBUG},` : '';
+    process.env.DEBUG = process.env.DEBUG + 'nemo*';
+  }
 
-program._name = 'nemo';
-if (program.logging) {
-  process.env.DEBUG = (process.env.DEBUG) ? `${process.env.DEBUG},` : '';
-  process.env.DEBUG = process.env.DEBUG + 'nemo*';
-}
+  // load these after the DEBUG var is set
+  server = require('../lib/server');
+  scaffold = require('../lib/scaffold');
+  NemoFactory = require('../lib/nemo');
+  debug = require('debug');
+  log = debug('nemo:cli:log');
 
-// load these after the DEBUG var is set
-server = require('../lib/server');
-scaffold = require('../lib/scaffold');
-NemoFactory = require('../lib/nemo');
-debug = require('debug');
-log = debug('nemo:cli:log');
+  if (allowUnknownArgs) {
+    log('allowing unknown command line arguments');
+  }
 
-if (allowUnknownArgs) {
-  log('allowing unknown command line arguments');
-}
-
-// are we launching the server?
-if (program.server) {
-  log('launching server');
-  return server(program);
-}
-if (program.scaffold) {
-  log('launching scaffold');
-  return scaffold.simple(program);
-}
-if (program.scaffoldComplex) {
-  log('launching scaffold-complex');
-  return scaffold.complex(program);
-}
-log('launching runner');
-NemoFactory.configure({baseDirectory: path.resolve(__dirname, '../config/cli')})
-  .then(function (_) {
-    BaseNemoConfig = _.config;
-    BaseNemoConfig.set('baseConfigPath', path.resolve(__dirname, '../config/cli'));
-    // are we using baseDirectory and confit?
-    if (program.baseDirectory) {
-      // baseDirectory case
-      return NemoFactory.configure(program);
-    } else if (program.configFile) {
-      // explicit config file case
-      return NemoFactory.configureJS(program);
-    }
-    try {
-      // implicit config file case
-      require(path.resolve(process.cwd(), 'nemo.config'));
-      program.configFile = path.resolve(process.cwd(), 'nemo.config');
-      return NemoFactory.configureJS(program);
-    } catch (err) {
-      throw err;
-    }
+  // are we launching the server?
+  if (program.server) {
+    log('launching server');
+    return server(program);
+  }
+  if (program.scaffold) {
+    log('launching scaffold');
+    return scaffold.simple(program);
+  }
+  if (program.scaffoldComplex) {
+    log('launching scaffold-complex');
+    return scaffold.complex(program);
+  }
+  log('launching runner');
+  NemoFactory.configure({
+    baseDirectory: path.resolve(__dirname, '../config/cli')
   })
-  .then(function (UserNemoConfig) {
-    let AllListeners = UserNemoConfig.config.get('output:listeners') || [];
-    AllListeners = AllListeners.concat(BaseNemoConfig.get('output:listeners'));
-    UserNemoConfig.config.set('output:listeners', AllListeners);
-    BaseNemoConfig.merge(UserNemoConfig.config);
-    return NemoFactory.start({program: program, config: BaseNemoConfig});
-  })
-  .catch(function (err) {
-    console.error('problem with starting nemo %O', err);
-  });
+    .then(function (_) {
+      BaseNemoConfig = _.config;
+      BaseNemoConfig.set(
+        'baseConfigPath',
+        path.resolve(__dirname, '../config/cli')
+      );
+      // are we using baseDirectory and confit?
+      if (program.baseDirectory) {
+        // baseDirectory case
+        return NemoFactory.configure(program);
+      } else if (program.configFile) {
+        // explicit config file case
+        return NemoFactory.configureJS(program);
+      }
+      try {
+        // implicit config file case
+        require(path.resolve(process.cwd(), 'nemo.config'));
+        program.configFile = path.resolve(process.cwd(), 'nemo.config');
+        return NemoFactory.configureJS(program);
+      } catch (err) {
+        throw err;
+      }
+    })
+    .then(function (UserNemoConfig) {
+      let AllListeners = UserNemoConfig.config.get('output:listeners') || [];
+      AllListeners = AllListeners.concat(
+        BaseNemoConfig.get('output:listeners')
+      );
+      UserNemoConfig.config.set('output:listeners', AllListeners);
+      BaseNemoConfig.merge(UserNemoConfig.config);
+      return NemoFactory.start({program: program, config: BaseNemoConfig});
+    })
+    .catch(function (err) {
+      console.error('problem with starting nemo %O', err);
+    });
+}());
