@@ -1,3 +1,30 @@
+## 4.13.1 
+
+- npm audit fix for some vulnerabilities
+- upgrade to mocha@9
+
+## 4.12.2
+
+- fix usage of uuid to comply with uuid@8
+
+## 4.12.1
+
+- fix usage of Mkdirp where we were promisifying (in the scaffold feature), but new version of Mkdirp already returns a promise
+## 4.12.0
+
+### Breaking Changes
+- Updated `chromedriver` dependency to version 81, which requires Node 10
+- Updated minimum requirement to `Node 10` from `Node 8`
+
+### Fix
+
+- Instantiate and injects `nemo` into context on the global `beforeEach` hook when `driverPerTest` is `true`
+- Updated dependency to Mocha 7.1.1 since that is the version that fixes start event firing too early, before it can be monitored. https://github.com/mochajs/mocha/issues/2753
+
+### Feature
+
+- Added `before:root` event
+
 ## 4.11.1
 
 - fix type error that is causing when describe.skip is used (https://github.com/krakenjs/nemo/pull/75)

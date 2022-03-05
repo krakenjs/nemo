@@ -329,6 +329,10 @@ Published when an instance ends. The event is an [`InstanceResult`](#instanceres
 This event is published when all instances are completed. The event is an array of [`InstanceResult`](#instanceresult)
 objects.
 
+### `root:before`
+
+This event is published when root suite execution started
+
 ### `suite:before`
 
 This event is published when suite execution started
@@ -431,8 +435,9 @@ Example (find this in the test configuration):
 }
 ...
 ```
+When `driverPerSuite` is `true` the global `beforeEach` hook will have a `nemo` instance injected, but not when `driverPerSuite` is `false`
 
-Please note: When using the `driverPerTest` option, there will be no `nemo` instance in the `before`/`after` lifecycle
+Please note: When using the `driverPerTest` option, there will be no reliable `nemo` instance in the `before`/`after` lifecycle
 context.
 
 ## Custom CLI Options (feature incomplete)
