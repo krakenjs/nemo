@@ -5,7 +5,10 @@ describe('@search@', function () {
     let {baseUrl, input, button, result} = nemo.data;
     await nemo.driver.get(baseUrl);
     await nemo.view._find(input).sendKeys('nemo selenium');
+    // await nemo.driver.sleep(1000);
     await nemo.view._find(input).sendKeys(nemo.wd.Key.TAB); // close any modal overlay (like google has)
+    // await nemo.driver.sleep(1000);
+
     await nemo.view._find(button).click();
     await nemo.view._waitVisible(result);
   });

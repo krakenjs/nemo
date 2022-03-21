@@ -1,5 +1,4 @@
 const path = require('path');
-
 module.exports = {
   data: {
     foo: 'bar'
@@ -16,29 +15,13 @@ module.exports = {
   profiles: {
     base: {
       tests: path.join(__dirname, '../nested*.js'),
+      driver: require(path.join(__dirname, '../config/driverconfig.chrome')),
       mocha: {
         timeout: 180000,
         reporter: 'mochawesome'
       },
       data: {
         baseUrl: 'https://www.google.com'
-      },
-      driver: {
-        builders: {
-          withCapabilities: [
-            {
-              browserName: 'chrome',
-              chromeOptions: {
-                args: [
-                  'headless',
-                  'window-size=1200,800',
-                  'disable-dev-shm-usage'
-                ]
-              }
-
-            }
-          ]
-        }
       }
     }
   }
